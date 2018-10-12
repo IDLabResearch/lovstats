@@ -1,0 +1,6 @@
+version: '2'
+services:
+  lodstats:
+    build:
+      context: .
+      dockerfile: Dockerfile-lodstats
