@@ -4,3 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-lodstats
+    volumes:
+      - ./LODStats:/LODStats
+      - ./input:/input

@@ -14,4 +14,3 @@ RUN cd /LODStats && \
   python setup.py build && \
   python setup.py install
 
-CMD [ "lodstats" "--help" ]

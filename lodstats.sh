@@ -1,1 +1,1 @@
-docker run -it --rm lodstats-container lodstats $@
+docker run -it --rm -v `pwd`/input:/input lodstats-container lodstats $@
