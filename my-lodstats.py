@@ -89,12 +89,13 @@ elif options.specific_stats:
         stats.append(st)
     new_stats = []
     print stats
-elif options.other_stats_folder:
-    other_stats_module = importlib.import_module(options.other_stats_folder)
-    other_stats = other_stats_module.all_stats
 else:
     stats = []
     new_stats = []
+
+if options.other_stats_folder:
+    other_stats_module = importlib.import_module(options.other_stats_folder)
+    other_stats = other_stats_module.all_stats
 
 stats += other_stats
 start_time = datetime.datetime.now()
