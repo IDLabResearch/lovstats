@@ -28,9 +28,9 @@ import importlib
 
 from optparse import OptionParser
 
-import LODStats.lodstats.RDFStats
-import LODStats.lodstats.config
-import LODStats.lodstats.stats
+import lodstats.RDFStats
+import lodstats.config
+import lodstats.stats
 
 import logging
 logger = logging.getLogger("lodstats")
@@ -58,6 +58,8 @@ lodstats.config.disable_debug()
 if options.debug:
     lodstats.config.enable_debug()
 
+stats = []
+new_stats = []
 other_stats = []
 
 if options.count:

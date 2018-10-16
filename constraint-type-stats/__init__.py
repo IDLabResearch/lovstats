@@ -22,11 +22,6 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 from C1Subsumption import C1Subsumption
 
 
-#vocabulary count
-from RDFSyntax import RDFSyntax
-from RDFSchema import RDFSchema
-from Owl import Owl
-
 
 all_stats = [C1Subsumption]
 
@@ -34,7 +29,7 @@ all_stats = [C1Subsumption]
 stats_to_do = []
 results = {}
 # init stats-objects, only do void by default
-def init_stats(stats_list=void_stats):
+def init_stats(stats_list=all_stats):
     #stats_to_do = []
     """init classes from stats_list, those necessary for VoID per default"""
     for stat_class in stats_list:
