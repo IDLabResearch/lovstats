@@ -1,7 +1,9 @@
-from lodstats.stats.RDFStatInterface import RDFStatInterface
-from pprint import pprint
 from numpy import median
-import utils
+
+from lodstats.stats.RDFStatInterface import RDFStatInterface
+
+from utils import utils
+
 
 class A4Subsumption(RDFStatInterface):
     """Multiple statistics regarding Subsumption,
