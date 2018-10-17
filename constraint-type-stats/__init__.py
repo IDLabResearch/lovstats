@@ -19,11 +19,11 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 # import stats modules "from xx import xx"
-from C1Subsumption import C1Subsumption
+from A4Subsumption import A4Subsumption
 
 
 
-all_stats = [C1Subsumption]
+all_stats = [A4Subsumption]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []

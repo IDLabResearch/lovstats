@@ -3,7 +3,7 @@ from pprint import pprint
 from numpy import median
 import utils
 
-class C1Subsumption(RDFStatInterface):
+class A4Subsumption(RDFStatInterface):
     """Multiple statistics regarding Subsumption,
     - Amount of subclasses
     - Amount of class hierarchies
@@ -12,7 +12,7 @@ class C1Subsumption(RDFStatInterface):
     - median class hierarchy depth"""
 
     def __init__(self, results):
-        super(C1Subsumption, self).__init__(results)
+        super(A4Subsumption, self).__init__(results)
         self.graph = {}
         self.c = 0
         self.roots = set()
