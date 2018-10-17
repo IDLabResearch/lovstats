@@ -20,10 +20,12 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 
 # import stats modules "from xx import xx"
 from A4Subsumption import A4Subsumption
+from A69DisjointProperties import A69DisjointProperties
+from A70DisjointClasses import A70DisjointClasses
 
 
 
-all_stats = [A4Subsumption]
+all_stats = [A4Subsumption, A69DisjointProperties, A70DisjointClasses]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
