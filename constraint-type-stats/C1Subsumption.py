@@ -1,5 +1,7 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from pprint import pprint
+from numpy import median
+import utils
 
 class C1Subsumption(RDFStatInterface):
     """Multiple statistics regarding Subsumption,
@@ -11,14 +13,28 @@ class C1Subsumption(RDFStatInterface):
 
     def __init__(self, results):
         super(C1Subsumption, self).__init__(results)
-        self.graph = self.results['graph'] = {}
-        self.c = self.results['count'] = 0
+        self.graph = {}
+        self.c = 0
+        self.roots = set()
+        self.avg_depth = self.results['avg_depth'] = 0
+        self.median_depth = self.results['median_depth'] = 0
+        self.amount_hierarchies = self.results['amount_hierarchies'] = 0
+        self.amount_subclasses = self.results["amount_subclasses"] = 0
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
         if statement.object.is_resource() and \
                 statement.subject.is_resource() and \
                         p == 'http://www.w3.org/2000/01/rdf-schema#subClassOf':
-            self.graph[s] = o
+            # Keep track of potential roots
+            self.roots.add(o)
+            # remove every subclass from potential roots
+            if s in self.roots:
+                self.roots.remove(s)
+            if o in self.graph:
+                self.graph[o].append(s)
+            else:
+                self.graph[o] = [s]
+            self.c += 1
 
     def voidify(self, void_model, dataset):
         pass
@@ -27,28 +43,10 @@ class C1Subsumption(RDFStatInterface):
         pass
 
     def postproc(self):
-        final_depth = 0
-        all_depths = [];
-        for root_object, root_subject in self.results['graph'].iteritems():
-            depth = 0
-            objects_encountered = []
-            new_depth = self.get_depth(root_subject, self.results['graph'], depth, objects_encountered)
-            if (new_depth > final_depth):
-                all_depths.append(final_depth)
-                final_depth = new_depth
-        self.c = self.results['count'] = final_depth
 
-    def get_depth(self, root_subject, graph, depth, objects_encountered):
-        """
-            TODO: recursive! check if it scales
-        """
-        new_depth = depth
-        for object, subject in graph.iteritems():
-            if (object == root_subject):
-                new_depth += 1
-                objects_encountered.append(object)
-                new_depth = self.get_depth(subject, graph, new_depth, objects_encountered)
-                break
-            if (new_depth > len(graph)):
-                return 0
-        return new_depth
+        hierarchies_depths = utils.compute_depths(self.graph, self.roots)
+
+        self.results['amount_hierarchies'] = len(hierarchies_depths)
+        self.results['amount_subclasses'] = self.c
+        self.results['avg_depth'] = sum(hierarchies_depths)/ float(len(hierarchies_depths))
+        self.results['median_depth'] = median(hierarchies_depths)

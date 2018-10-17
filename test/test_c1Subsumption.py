@@ -21,10 +21,9 @@ class TestC1Subsumption(unittest.TestCase):
 
     def test_all(self):
         uri = 'file://' + testfile_path + 'hierarchies.nt'
-        rdfstats = RDFStats(uri, format="nt", stats=[C1Subsumption, StringLength, SubclassUsage])
+        rdfstats = RDFStats(uri, format="nt", stats=[C1Subsumption])
         rdfstats.start_statistics()
-        pprint(rdfstats)
-        print "#############################"
-        pprint(rdfstats.get_stats_results())
-        print "#############################"
-        assert(len(rdfstats.voidify("turtle")) > 5)
+        assert(rdfstats.get_stats_results()['c1subsumption']['amount_hierarchies'] == 3)
+        assert (rdfstats.get_stats_results()['c1subsumption']['amount_subclasses'] == 8)
+        assert (rdfstats.get_stats_results()['c1subsumption']['avg_depth'] == 2.0)
+        assert (rdfstats.get_stats_results()['c1subsumption']['median_depth'] == 2.0)
