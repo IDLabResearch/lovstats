@@ -20,12 +20,16 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 
 # import stats modules "from xx import xx"
 from A4Subsumption import A4Subsumption
+from A13PropertyDomains import A13PropertyDomains
+from A14PropertyRanges import A14PropertyRanges
+from A20LiteralPatternMatching import A20LiteralPatternMatching
+from A23UniversalQuantifications import A23UniversalQuantifications
 from A69DisjointProperties import A69DisjointProperties
 from A70DisjointClasses import A70DisjointClasses
 
 
 
-all_stats = [A4Subsumption, A69DisjointProperties, A70DisjointClasses]
+all_stats = [A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching, A14PropertyRanges, A23UniversalQuantifications, A69DisjointProperties, A70DisjointClasses]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
@@ -33,7 +37,7 @@ results = {}
 # init stats-objects, only do void by default
 def init_stats(stats_list=all_stats):
     #stats_to_do = []
-    """init classes from stats_list, those necessary for VoID per default"""
+    """init classes from all available stats"""
     for stat_class in stats_list:
         stats_to_do.append(stat_class(results))
     return results
