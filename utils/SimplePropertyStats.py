@@ -1,7 +1,15 @@
 from numpy import median
 
 class SimplePropertyStats():
-    """dfa"""
+    """
+    This class can be used to collect simple statistics (min/max, avg/median) of properties with multiple objects.
+    E.g. given the RDF triples:
+        ex:Human  owl:disjointWith ex:Animal .
+        ex:Car    owl:disjointWith ex:Plane, ex:Boat, ex:Animal .
+        ex:Boat   owl:disjointWith ex:Plane, ex:Car, ex:Animal .
+
+    the min amount of disjointWith is computed (in this example 1), the max (in this example 3), the average and the median.
+    """
     def __init__(self):
         self.properties = {}
         self.c = 0
