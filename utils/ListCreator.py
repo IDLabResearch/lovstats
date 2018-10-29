@@ -16,13 +16,7 @@ class ListCreator():
     def count(self, s, p, o, statement):
         # Keep track of datatypes with restrictions
         if p == self.listPredicate:
-            print("in the owl if")
-            print("s is: " + s)
-            print("o is: " + o)
-            if o in self.roots:
-                self.roots[o].append(s)
-            else:
-                self.roots[o] = [s]
+            self.roots[o] = s
             self.list_roots.append(o)
 
         # Keep track of all rdf:first statements
@@ -37,18 +31,7 @@ class ListCreator():
             self.list_nodes[s] = o
 
     def compute(self):
-        print "compute"
-        print("notes")
-        pprint(self.list_nodes)
-        print("roots")
-        pprint(self.roots)
-        print("list roots")
-        pprint(self.list_roots)
-        print("list values")
-        pprint(self.list_values)
         self.result_lists = utils.create_list_from_linked_list(self.list_nodes, self.list_roots)
-        print("result lists")
-        pprint(self.result_lists)
         self.result_lists_values = utils.get_list_values(self.result_lists, self.list_values, self.roots)
 
     def get_list(self):
