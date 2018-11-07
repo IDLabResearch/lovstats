@@ -1,5 +1,4 @@
 
-Repo setup according to https://www.airpair.com/docker/posts/efficiant-development-workfow-using-git-submodules-and-docker-compose
 
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
 ```
@@ -21,8 +20,25 @@ In the shown example, the input is taken from the mounted input directory which 
 
 # How does our extension work?
 
-* We adapted the lodstats script, to take also another stats directory into account (`my-lodstats.py` with `-o` option).
-* Our stats modules are in the `constraint-type-stats` directory.
+* We adapted the lodstats script, to take also another stats directory into account (`./src/lodstats.py` with `-o` option).
+* Our stats modules are in the `constraint-type-stats` directory (including `__init__.py`, which makes the stats modules available
 
 # How to install LODStats?
-todo
+
+```
+# Create a docker image to execute LODStats with our extension
+docker-compose build lodstats-execute
+
+# Run the script
+docker-compose run lodstats-execute /LODStats/scripts/lodstats
+```
+
+# How to run tests?
+
+```
+# Create a docker image to run tests
+docker-compose build lodstats-test
+
+# Execute the tests (Does currently not work)
+docker-compose up lodstats-test
+```
