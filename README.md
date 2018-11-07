@@ -1,6 +1,7 @@
 
 
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
+
 ```
 bash lodstats.sh /input/foaf/foaf.rdf -v
 ```
