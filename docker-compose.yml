@@ -1,5 +1,20 @@
 version: '2'
 services:
+  lodstats-execute:
+    build: docker-execute
+    image: lodstats-execute
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./src/:/src"
+      - "./src/lodstats.py:/LODStats/scripts/lodstats"
+  lodstats-test:
+    build: docker-test
+    image: lodstats-test
+    volumes:
+      - "./src/:/src"
+      - "./src/lodstats.py:/LODStats/scripts/lodstats"
+    network_mode: bridge
   lodstats:
     build:
       context: .
