@@ -76,6 +76,19 @@ def create_list_from_linked_list(graph, roots):
     return lists
 
 # -----------------------------------------------------------------------------
+def gather_results(detectors):
+    """
+
+    :param detectors:
+    :return:
+    """
+    results = {}
+    for d in detectors:
+        results[d.getName()] = d.getDetectorOutput()
+
+    return results
+
+# -----------------------------------------------------------------------------
 def get_list_values(list, list_values, root_entries):
     """
 

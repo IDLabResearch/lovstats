@@ -1,19 +1,19 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.SimplePropertyStats import SimplePropertyStats
+from utils.DisjointClassDetectorOwlDisjointWith import DisjointClassDetectorOwlDisjointWith
+from utils import utils
 
 class A70DisjointClasses(RDFStatInterface):
-    """SimplePropertyStatistics for disjoint classes"""
+    """Create statistics for disjoint classes"""
 
     def __init__(self, results):
         super(A70DisjointClasses, self).__init__(results)
 
-        self.propertyStats = SimplePropertyStats()
+        self.detectors = [DisjointClassDetectorOwlDisjointWith()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if statement.object.is_resource() and \
-                statement.subject.is_resource() and \
-                        p == 'http://www.w3.org/2002/07/owl#disjointWith':
-            self.propertyStats.count(s, o)
+            for d in self.detectors:
+                d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -22,10 +22,4 @@ class A70DisjointClasses(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.propertyStats.compute()
-
-        self.results['amount_disjoint_classes'] = self.propertyStats.getAmount()
-        self.results['avg_disjoint'] = self.propertyStats.getAverage()
-        self.results['median_disjoint'] = self.propertyStats.getMedian()
-        self.results['min_disjoint'] = self.propertyStats.getMin()
-        self.results['max_disjoint'] = self.propertyStats.getMax()
+        self.results["detectors"] = utils.gather_results(self.detectors)
