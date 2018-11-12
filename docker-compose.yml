@@ -18,10 +18,3 @@ services:
       - "./src/lodstats.py:/LODStats/scripts/lodstats"
       - "./test/:/test"
     network_mode: bridge
-  lodstats:
-    build:
-      context: .
-      dockerfile: Dockerfile-lodstats
-    volumes:
-      - ./LODStats:/LODStats
-      - ./input:/input
