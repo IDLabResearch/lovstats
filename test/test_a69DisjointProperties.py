@@ -3,7 +3,7 @@ import unittest
 import sys
 import helpers
 sys.path.append('../LODStats')
-sys.path.append('../constraint-type-stats')
+sys.path.append('../src/restriction-types-stats')
 from A69DisjointProperties import A69DisjointProperties
 import lodstats
 from lodstats import RDFStats

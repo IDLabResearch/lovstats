@@ -8,12 +8,15 @@ services:
     volumes:
       - "./src/:/src"
       - "./src/lodstats.py:/LODStats/scripts/lodstats"
+      - "./input/:/input"
+    network_mode: bridge
   lodstats-test:
     build: docker-test
     image: lodstats-test
     volumes:
       - "./src/:/src"
       - "./src/lodstats.py:/LODStats/scripts/lodstats"
+      - "./test/:/test"
     network_mode: bridge
   lodstats:
     build:

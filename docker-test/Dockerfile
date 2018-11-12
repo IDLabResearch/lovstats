@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 RUN apt-get update \
   && apt-get install -y python-pip python-dev librdf0-dev python-librdf librdf0-dev python-librdf git raptor2-utils
 
-RUN pip install coverage nose nose-watch
+RUN pip install coverage nose nose-watch numpy
 
 RUN mkdir /LODStats \
   && cd /LODStats \

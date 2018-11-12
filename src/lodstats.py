@@ -35,6 +35,8 @@ import lodstats.stats
 import logging
 logger = logging.getLogger("lodstats")
 
+sys.path.append('/src')
+
 parser = OptionParser(usage="usage: %prog [options] [-m model.{rdf,nt,...}] file/URI [file/URI ...]")
 parser.add_option('-v', '--void', action='store_true', help='generate VoID')
 parser.add_option('-c', '--count', action='store_true', help='just count triples, no statistics')
