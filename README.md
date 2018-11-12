@@ -3,10 +3,17 @@
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
 
 ```
-bash lodstats.sh /input/foaf/foaf.rdf -v
+# calling lodstats
+bash lodstats.sh
+
+# execute our statistics (if folder input mounted to docker container)
+bash lodstats.sh -o restriction-types-stats /input/foaf/foaf.rdf 
+
+# execute our statistics on an HTTP uri
+bash lodstats.sh -o restriction-types-stats http://xmlns.com/foaf/spec/index.rdf
 ```
 
-please note that lodstats is called in the container, thus needed directories needs to be mounted in the `lodstats.sh` script.
+please note that lodstats is called in the container, thus needed directories needs to be mounted in the docker-compose file.
 In the shown example, the input is taken from the mounted input directory which is mounted inside the lodstats.sh script.
 
 # How does LODStats work?
