@@ -39,8 +39,13 @@ class SimplePropertyStats():
             propertiesLengths.append(current_length)
 
         self.amount = self.c
-        self.avg = sum(propertiesLengths) / float(len(propertiesLengths))
-        self.median = median(propertiesLengths)
+
+        if(len(propertiesLengths) > 0):
+            self.avg = sum(propertiesLengths) / float(len(propertiesLengths))
+            self.median = median(propertiesLengths)
+        else:
+            self.avg = 0
+            self.median = 0
 
     def getAverage(self):
         return self.avg
