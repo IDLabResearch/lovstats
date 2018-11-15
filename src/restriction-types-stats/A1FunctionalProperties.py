@@ -8,7 +8,6 @@ class A1FunctionalProperties(RDFStatInterface):
 
     def __init__(self, results):
         super(A1FunctionalProperties, self).__init__(results)
-
         self.detectors = [FunctionalPropertyDetectorOwlFunctionalProperty()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):

@@ -20,6 +20,7 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 
 # import stats modules "from xx import xx"
 from A1FunctionalProperties import A1FunctionalProperties
+from A2InverseFunctionalProperties import A2InverseFunctionalProperties
 from A4Subsumption import A4Subsumption
 from A13PropertyDomains import A13PropertyDomains
 from A14PropertyRanges import A14PropertyRanges
@@ -30,7 +31,7 @@ from A70DisjointClasses import A70DisjointClasses
 
 
 
-all_stats = [A1FunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching, A14PropertyRanges, A23UniversalQuantifications, A69DisjointProperties, A70DisjointClasses]
+all_stats = [A1FunctionalProperties, A2InverseFunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching, A14PropertyRanges, A23UniversalQuantifications, A69DisjointProperties, A70DisjointClasses]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
