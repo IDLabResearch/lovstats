@@ -4,7 +4,7 @@ from lodstats.stats.RDFStatInterface import RDFStatInterface
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.SimplePropertyStats import SimplePropertyStats
 from utils.DisjointPropertyDetectorOwlDisjointWith import DisjointPropertyDetectorOwlDisjointWith
-from utils import utils
+from utils import util_functions
 
 class A69DisjointProperties(RDFStatInterface):
     """Create statistics for disjoint properties"""
@@ -25,4 +25,4 @@ class A69DisjointProperties(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results["detectors"] = utils.gather_results(self.detectors)
+        self.results["detectors"] = util_functions.gather_results(self.detectors)

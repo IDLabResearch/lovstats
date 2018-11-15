@@ -1,4 +1,4 @@
-import utils
+import util_functions
 from pprint import pprint
 class ListCreator():
     """
@@ -31,8 +31,8 @@ class ListCreator():
             self.list_nodes[s] = o
 
     def compute(self):
-        self.result_lists = utils.create_list_from_linked_list(self.list_nodes, self.list_roots)
-        self.result_lists_values = utils.get_list_values(self.result_lists, self.list_values, self.roots)
+        self.result_lists = util_functions.create_list_from_linked_list(self.list_nodes, self.list_roots)
+        self.result_lists_values = util_functions.get_list_values(self.result_lists, self.list_values, self.roots)
 
     def get_list(self):
         return self.result_lists_values

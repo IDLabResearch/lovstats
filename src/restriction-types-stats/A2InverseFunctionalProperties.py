@@ -1,7 +1,7 @@
 
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.InverseFunctionalPropertyDetectorOwlInverseFunctionalProperty import InverseFunctionalPropertyDetectorOwlInverseFunctionalProperty
-from utils import utils
+from utils import util_functions
 
 
 class A2InverseFunctionalProperties(RDFStatInterface):
@@ -22,4 +22,4 @@ class A2InverseFunctionalProperties(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results["detectors"] = utils.gather_results(self.detectors)
+        self.results["detectors"] = util_functions.gather_results(self.detectors)
