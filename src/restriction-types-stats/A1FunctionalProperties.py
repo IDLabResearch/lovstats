@@ -4,7 +4,7 @@ from utils import util_functions
 
 
 class A1FunctionalProperties(RDFStatInterface):
-    """Amount of owl:FunctionalProperty statements"""
+    """Create statistics for functional properties"""
 
     def __init__(self, results):
         super(A1FunctionalProperties, self).__init__(results)

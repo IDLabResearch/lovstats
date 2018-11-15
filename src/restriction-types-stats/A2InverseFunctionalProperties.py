@@ -5,7 +5,7 @@ from utils import util_functions
 
 
 class A2InverseFunctionalProperties(RDFStatInterface):
-    """Amount of owl:FunctionalProperty statements"""
+    """Create statistics for inverse functional properties"""
 
     def __init__(self, results):
         super(A2InverseFunctionalProperties, self).__init__(results)

@@ -4,7 +4,7 @@ from utils import util_functions
 
 
 class A13PropertyDomains(RDFStatInterface):
-    """Amount of owl:FunctionalProperty statements"""
+    """Create statistics for the domain of properties"""
 
     def __init__(self, results):
         super(A13PropertyDomains, self).__init__(results)
