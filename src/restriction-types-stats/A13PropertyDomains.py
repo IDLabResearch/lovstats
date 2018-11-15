@@ -1,18 +1,18 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.SimplePropertyStats import SimplePropertyStats
+from utils.PropertyDomainDetectorRdfsDomain import PropertyDomainDetectorRdfsDomain
+from utils import util_functions
+
 
 class A13PropertyDomains(RDFStatInterface):
-    """Amount of rdfs:domain statements"""
+    """Amount of owl:FunctionalProperty statements"""
 
     def __init__(self, results):
         super(A13PropertyDomains, self).__init__(results)
-        self.c = 0
+        self.detectors = [PropertyDomainDetectorRdfsDomain()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if statement.object.is_resource() and \
-                statement.subject.is_resource() and \
-                        p == 'http://www.w3.org/2000/01/rdf-schema#domain':
-            self.c += 1
+        for d in self.detectors:
+            d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -21,4 +21,4 @@ class A13PropertyDomains(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results['amount_property_domains'] = self.c
+        self.results["detectors"] = util_functions.gather_results(self.detectors)
