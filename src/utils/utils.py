@@ -78,12 +78,15 @@ def create_list_from_linked_list(graph, roots):
 # -----------------------------------------------------------------------------
 def gather_results(detectors):
     """
-
+    Execute the d.compute method for each given detector.
+    After that the result (d.getDetectorOutput()) method is called and added as value
+    under the key d.getName() to the result which is returned in the end.
     :param detectors:
     :return:
     """
     results = {}
     for d in detectors:
+        d.compute()
         results[d.getName()] = d.getDetectorOutput()
 
     return results

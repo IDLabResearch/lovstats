@@ -1,10 +1,20 @@
 
 
+TYPE_INT="int"
+TYPE_FLOAT="float"
+TYPE_BOOLEAN="boolean"
+
+allowed_types=[TYPE_INT, TYPE_FLOAT, TYPE_BOOLEAN]
 
 class RestrictionTypeDetector(object):
+    """
+    This class serves as interface for all Restriction Type Detectors.
+    The detector output contains the version-name, the implementation-name and the actual results.
+    Specific detetor subclasses have to add the results using the addResult method.
+    """
 
     def __init__(self):
-        pass
+        self.results = {}
 
     def getName(self):
         raise NotImplementedError
@@ -22,7 +32,7 @@ class RestrictionTypeDetector(object):
         results = {
             "version": self.getVersion(),
             "implementation": self.getImplementation(),
-            "results": self.getResults()
+            "results": self.results
         }
         return results
 
@@ -32,5 +42,12 @@ class RestrictionTypeDetector(object):
     def getImplementation(self):
         raise NotImplementedError
 
-    def getResults(self):
-        raise NotImplementedError
+    def addResult(self, name, value, type):
+
+        if type not in allowed_types:
+            raise TypeError("Result type must be one of the following " + str(allowed_types))
+
+        self.results[name] = {
+            "value": value,
+            "type": type
+        }

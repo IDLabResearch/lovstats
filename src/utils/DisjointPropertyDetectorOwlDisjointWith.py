@@ -3,7 +3,10 @@ from DisjointClassDetector import DisjointClassDetector
 from SimplePropertyStats import SimplePropertyStats
 
 class DisjointPropertyDetectorOwlDisjointWith(DisjointClassDetector):
-
+    """
+    This class implements the detection of the owl:propertyDisjointWith Restriction Type Expression.
+    For further information have a look at the parent class.
+    """
     def __init__(self):
         super(DisjointPropertyDetectorOwlDisjointWith, self).__init__()
         self.propertyStats = SimplePropertyStats()
@@ -13,10 +16,10 @@ class DisjointPropertyDetectorOwlDisjointWith(DisjointClassDetector):
             self.propertyStats.count(s, o)
 
     def getName(self):
-        return "OwlPropertyDisjointWith"
+        return "OwlClassDisjointWith"
 
     def getVersion(self):
-        return "OwlPropertyDisjointWith-v1"
+        return "OwlClassDisjointWith-v1"
 
     def getImplementation(self):
         return "LODStatsModule"
@@ -24,8 +27,9 @@ class DisjointPropertyDetectorOwlDisjointWith(DisjointClassDetector):
     def compute(self):
         self.propertyStats.compute()
 
-        self.setAmountDisjointProperties(self.propertyStats.getAmount())
-        self.setAverageDisjoint(self.propertyStats.getAverage())
-        self.setMedianDisjoint(self.propertyStats.getMedian())
-        self.setMinDisjoint(self.propertyStats.getMin())
-        self.setMaxDisjoint(self.propertyStats.getMax())
+        self.setAll(amount=self.propertyStats.getAverage(),
+                    average=self.propertyStats.getAverage(),
+                    median=self.propertyStats.getMedian(),
+                    min=self.propertyStats.getMin(),
+                    max=self.propertyStats.getMax())
+

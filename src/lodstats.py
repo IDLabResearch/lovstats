@@ -35,6 +35,7 @@ import lodstats.stats
 import logging
 logger = logging.getLogger("lodstats")
 
+from pprint import pprint
 sys.path.append('/src')
 
 parser = OptionParser(usage="usage: %prog [options] [-m model.{rdf,nt,...}] file/URI [file/URI ...]")
@@ -179,16 +180,17 @@ if not options.void:
     print("Basic stats: %s triples, %s warnings" % (rdf_stats.get_no_of_triples(), rdf_stats.get_no_of_warnings()))
     if not options.count:
         print("Results (from custom code):")
-        for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
-            print("\t%s" % stat_name)
-            for subname, result in stat_dict.iteritems():
-                if type(result) == dict or type(result) == list:
-                    if subname in ('usage_count'):
-                        print("\t\t%s:" % subname)
-                        for subsubname, subresult in result.iteritems():
-                            #if subresult > 0:
-                            print("\t\t\t%s: %s" % (subsubname, subresult))
-                    else:
-                        print("\t\tlen(%s): %d" % (subname, len(result)))
-                else:
-                    print("\t\t%s: %s" % (subname, result))
+        pprint(rdf_stats.get_stats_results())
+        #for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
+        #    print("\t%s" % stat_name)
+        #    for subname, result in stat_dict.iteritems():
+        #        if type(result) == dict or type(result) == list:
+        #            if subname in ('usage_count'):
+        #                print("\t\t%s:" % subname)
+        #                for subsubname, subresult in result.iteritems():
+        #                    #if subresult > 0:
+        #                    print("\t\t\t%s: %s" % (subsubname, subresult))
+        #            else:
+        #                print("\t\tlen(%s): %d" % (subname, len(result)))
+        #        else:
+        #            print("\t\t%s: %s" % (subname, result))
