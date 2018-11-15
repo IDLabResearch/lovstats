@@ -1,23 +1,17 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.ListCreator import ListCreator
-from pprint import pprint
+from utils.LiteralPatternDetectorXsdPatternOwlRestriction import LiteralPatternDetectorXsdPatternOwlRestriction
+from utils import util_functions
 
 class A20LiteralPatternMatching(RDFStatInterface):
     """Amount of owl:AsymmetricProperty statements"""
 
     def __init__(self, results):
         super(A20LiteralPatternMatching, self).__init__(results)
-        self.xsdPatterns = {}
-
-        self.restriction_list_creator = ListCreator('http://www.w3.org/2002/07/owl#withRestrictions')
+        self.detectors = [LiteralPatternDetectorXsdPatternOwlRestriction()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        # Keep track of the (blank) nodes defining a literal pattern
-        if p == 'http://www.w3.org/2001/XMLSchema#pattern':
-            self.xsdPatterns[s] = o
-
-        # call the list creator which keeps track of all rdf:first and rdf:rest list elements
-        self.restriction_list_creator.count(s, p, o, statement)
+        for d in self.detectors:
+            d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -26,16 +20,4 @@ class A20LiteralPatternMatching(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.restriction_list_creator.compute()
-        self.list = self.restriction_list_creator.get_list()
-
-        # We have now all the owl:withRestrictions rdf collections (rdf:first, rdf:rest construct)
-        # additionally we have a list with all xsd patterns
-        # now we have to find out which xsd patterns are part of the restrictions. That are our actual literal patterns
-        literalPatternRestrictionCounter = 0
-        for patternNodeID in self.xsdPatterns:
-            if self.restriction_list_creator.one_list_contains(patternNodeID):
-                literalPatternRestrictionCounter += 1
-
-        self.results['amount_xsd_patterns'] = len(self.xsdPatterns)
-        self.results['amount_literal_patterns'] = literalPatternRestrictionCounter
+        self.results["detectors"] = util_functions.gather_results(self.detectors)

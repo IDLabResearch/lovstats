@@ -1,5 +1,5 @@
 import util_functions
-from pprint import pprint
+
 class ListCreator():
     """
     This class creates a list from rdf:first, rdf:rest linked lists.
