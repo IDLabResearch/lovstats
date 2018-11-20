@@ -27,12 +27,14 @@ from A14PropertyRanges import A14PropertyRanges
 from A20LiteralPatternMatching import A20LiteralPatternMatching
 from A23UniversalQuantifications import A23UniversalQuantifications
 from A32MinimumUnqualifiedCardinality import A32MinimumUnqualifiedCardinality
+from A33MinimumQualifiedCardinality import A33MinimumQualifiedCardinality
 from A69DisjointProperties import A69DisjointProperties
 from A70DisjointClasses import A70DisjointClasses
 
 
 
-all_stats = [A1FunctionalProperties, A2InverseFunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching, A14PropertyRanges, A23UniversalQuantifications, A32MinimumUnqualifiedCardinality, A69DisjointProperties, A70DisjointClasses]
+all_stats = [A1FunctionalProperties, A2InverseFunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching,
+             A14PropertyRanges, A23UniversalQuantifications, A32MinimumUnqualifiedCardinality, A33MinimumQualifiedCardinality, A69DisjointProperties, A70DisjointClasses]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []

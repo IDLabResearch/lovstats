@@ -1,19 +1,17 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.SimplePropertyStats import SimplePropertyStats
+from utils.MinQualifiedCardinalityDetectorOwlMinQualifiedCardinality import MinQualifiedCardinalityDetectorOwlMinQualifiedCardinality
+from utils import util_functions
 
-class A32MinimumQualifiedCardinality(RDFStatInterface):
-    """Amount of owl:minQualifiedCardinality statements"""
+class A33MinimumQualifiedCardinality(RDFStatInterface):
+    """Create statistics about minimum qualified cardinality"""
 
     def __init__(self, results):
-        super(A32MinimumQualifiedCardinality, self).__init__(results)
-        self.c = 0
-        self.propertyStats = SimplePropertyStats()
+        super(A33MinimumQualifiedCardinality, self).__init__(results)
+        self.detectors = [MinQualifiedCardinalityDetectorOwlMinQualifiedCardinality()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if statement.object.is_resource() and \
-                statement.subject.is_resource() and \
-                        p == 'http://www.w3.org/2002/07/owl#minQualifiedCardinality':
-            self.c += 1
+        for d in self.detectors:
+            d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -22,4 +20,4 @@ class A32MinimumQualifiedCardinality(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results['amount_qualified_min_cardinality'] = self.c
+        self.results["detectors"] = util_functions.gather_results(self.detectors)

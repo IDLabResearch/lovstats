@@ -3,7 +3,7 @@ from MinUnqualifiedCardinalityDetector import MinUnqualifiedCardinalityDetector
 
 class MinUnqualifiedCardinalityDetectorOwlMinCardinality(MinUnqualifiedCardinalityDetector):
     """
-    This class implements the detection of the rdfs:domain Restriction Type Expression.
+    This class implements the detection of the owl:minCardinality Restriction Type Expression.
     For further information have a look at the parent class.
     """
     def __init__(self):
