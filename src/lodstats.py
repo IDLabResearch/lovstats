@@ -25,6 +25,8 @@ import os
 import sys
 import datetime
 import importlib
+import ntpath
+import rdflib
 
 from optparse import OptionParser
 
@@ -151,6 +153,13 @@ def callback_function_statistics(rdf_file):
                     else:
                         print("\t\t%s: %s" % (subname, result))
 
+def getDataType(ref):
+    datadict = {
+        "int": rdflib.XSD.integer,
+        "float": rdflib.XSD.float
+    }
+    return datadict.get(ref, rdflib.XSD.string)
+
 ####################
 # Processing logic #
 ####################
@@ -175,13 +184,41 @@ for resource_uri in args:
 
 if options.void:
     print(rdf_stats.voidify("turtle"))
+    
+lovc = rdflib.Namespace("http://example.org/lovcube#")
+lovvoc = rdflib.Namespace("http://example.org/lovvoc#")
+qb = rdflib.Namespace("http://purl.org/linked-data/cube#")
 
 if not options.void:
     #print("Basic stats: %s triples, %s warnings" % (rdf_stats.get_no_of_triples(), rdf_stats.get_no_of_warnings()))
     if not options.count:
         #print("Results (from custom code):")
-        pprint(rdf_stats.get_stats_results())
-        #for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
+        #pprint(rdf_stats.get_stats_results())
+        g=rdflib.Graph()
+        dataset = rdflib.BNode()
+        g.add((dataset, rdflib.RDF.type, qb.DataSet))
+        g.add((dataset, qb.structure, lovvoc['lovstats2018datastructure']))
+        output = """@prefix qb:       <http://purl.org/linked-data/cube#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix lovc:     <http://example.com/lovcube#> .
+@prefix ex:       <http://example.com/ex#> .
+
+ex:1111 a qb_DataSet
+"""
+        index = 0
+        for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
+            observ = rdflib.BNode()
+            g.add((observ, rdflib.RDF.type, qb.Observation))
+            g.add((observ, qb.dataSet, dataset))
+            g.add((observ, lovvoc['execution-time'], rdflib.Literal("")))
+            g.add((observ, lovvoc['ontology-version'], rdflib.Literal("")))
+            for detectors_name,detectors_dict in stat_dict.get('detectors', {}).iteritems():
+                g.add((observ, lovvoc['restriction-type'], lovvoc[detectors_name]))
+                g.add((observ, lovvoc.implementation, lovvoc[detectors_dict.get('implementation', '')]))
+                g.add((observ, lovvoc.detector, lovvoc[detectors_dict.get('version', '')]))
+                for results_name,results_dict in detectors_dict.get('results', {}).iteritems():
+                    g.add((observ, lovvoc[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=getDataType(results_dict.get('type', 'string')))))
         #    print("\t%s" % stat_name)
         #    for subname, result in stat_dict.iteritems():
         #        if type(result) == dict or type(result) == list:
@@ -194,3 +231,6 @@ if not options.void:
         #                print("\t\tlen(%s): %d" % (subname, len(result)))
         #        else:
         #            print("\t\t%s: %s" % (subname, result))
+            index += 1
+        print g.serialize(format='nt')
+       
