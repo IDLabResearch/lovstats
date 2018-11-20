@@ -1,19 +1,17 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.SimplePropertyStats import SimplePropertyStats
+from utils.MinUnqualifiedCardinalityDetectorOwlMinCardinality import MinUnqualifiedCardinalityDetectorOwlMinCardinality
+from utils import util_functions
 
 class A32MinimumUnqualifiedCardinality(RDFStatInterface):
-    """Amount of owl:minCardinality statements"""
+    """Create statistics for minimum unqualified cardinality"""
 
     def __init__(self, results):
         super(A32MinimumUnqualifiedCardinality, self).__init__(results)
-        self.c = 0
-        self.propertyStats = SimplePropertyStats()
+        self.detectors = [MinUnqualifiedCardinalityDetectorOwlMinCardinality()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if statement.object.is_resource() and \
-                statement.subject.is_resource() and \
-                        p == 'http://www.w3.org/2002/07/owl#minCardinality':
-            self.c += 1
+        for d in self.detectors:
+            d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -22,4 +20,4 @@ class A32MinimumUnqualifiedCardinality(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results['amount_unqualified_min_cardinality'] = self.c
+        self.results["detectors"] = util_functions.gather_results(self.detectors)
