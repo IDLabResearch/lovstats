@@ -1,19 +1,18 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
+from utils.UniversalQuantificationDetectorOwlAllValuesFrom import UniversalQuantificationDetectorOwlAllValuesFrom
 from utils.SimplePropertyStats import SimplePropertyStats
+from utils import util_functions
 
 class A23UniversalQuantifications(RDFStatInterface):
-    """SimplePropertyStatistics for universal quantifications (owl:allValuesFrom)"""
+    """Create statistics for universal quantifications"""
 
     def __init__(self, results):
         super(A23UniversalQuantifications, self).__init__(results)
-        self.c = 0
-        self.propertyStats = SimplePropertyStats()
+        self.detectors = [UniversalQuantificationDetectorOwlAllValuesFrom()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if statement.object.is_resource() and \
-                statement.subject.is_resource() and \
-                        p == 'http://www.w3.org/2002/07/owl#allValuesFrom':
-            self.c += 1
+        for d in self.detectors:
+            d.count(s, p, o, s_blank, o_l, o_blank, statement)
 
     def voidify(self, void_model, dataset):
         pass
@@ -22,4 +21,4 @@ class A23UniversalQuantifications(RDFStatInterface):
         pass
 
     def postproc(self):
-        self.results['amount_universal_quantifications'] = self.c
+        self.results["detectors"] = util_functions.gather_results(self.detectors)
