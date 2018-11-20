@@ -12,7 +12,7 @@ class PropertyDomainDetector(RestrictionTypeDetector):
     """
     def __init__(self):
         super(PropertyDomainDetector, self).__init__()
-        self.addResult("amount", 0, "int")
+        self.addResult("amount", 0, TYPE_INT)
 
     def setAmountDomainProperties(self, amount):
         self.addResult("amount", amount, TYPE_INT)

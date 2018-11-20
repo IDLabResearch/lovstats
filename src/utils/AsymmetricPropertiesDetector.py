@@ -4,7 +4,7 @@ from RestrictionTypeDetector import TYPE_INT
 
 class AsymmetricPropertiesDetector(RestrictionTypeDetector):
     """
-    This class serves as interface for all Restriction Type Statistics of range expressions.
+    This class serves as interface for all Restriction Type Statistics of asymmetric properties expressions.
     It defines the statistical metric amount.
 
     Subclasses of this class, should implement the compute method in which they should perform
