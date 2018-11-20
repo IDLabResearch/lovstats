@@ -22,6 +22,7 @@ def compute_depths(graph, roots):
             depths.append(depth)
     return depths
 
+
 # -----------------------------------------------------------------------------
 def count_depth(graph, node, level, depth):
     """
@@ -44,12 +45,23 @@ def count_depth(graph, node, level, depth):
     1
     """
     if node in graph:
+        visited = set()
+        visited.add(node)
         level += 1
         if level > depth:
             depth = level
         for child in graph[node]:
-            depth = count_depth(graph, child, level, depth)
-            level -+ 1
+            depth = count_depth_recursive(graph, child, visited, level, depth)
+    return depth
+
+def count_depth_recursive(graph, node, visited, level, depth):
+    if node in graph and node not in visited:
+        visited.add(node)
+        level += 1
+        if level > depth:
+            depth = level
+        for child in graph[node]:
+            depth = count_depth_recursive(graph, child, visited, level, depth)
     return depth
 
 # -----------------------------------------------------------------------------

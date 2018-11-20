@@ -177,9 +177,9 @@ if options.void:
     print(rdf_stats.voidify("turtle"))
 
 if not options.void:
-    print("Basic stats: %s triples, %s warnings" % (rdf_stats.get_no_of_triples(), rdf_stats.get_no_of_warnings()))
+    #print("Basic stats: %s triples, %s warnings" % (rdf_stats.get_no_of_triples(), rdf_stats.get_no_of_warnings()))
     if not options.count:
-        print("Results (from custom code):")
+        #print("Results (from custom code):")
         pprint(rdf_stats.get_stats_results())
         #for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
         #    print("\t%s" % stat_name)
