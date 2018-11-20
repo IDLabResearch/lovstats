@@ -30,6 +30,7 @@ from A32MinimumUnqualifiedCardinality import A32MinimumUnqualifiedCardinality
 from A33MinimumQualifiedCardinality import A33MinimumQualifiedCardinality
 from A34MaximumUnqualifiedCardinality import A34MaximumUnqualifiedCardinality
 from A35MaximumQualifiedCardinality import A35MaximumQualifiedCardinality
+from A57AsymmetricProperties import A57AsymmetricProperties
 from A69DisjointProperties import A69DisjointProperties
 from A70DisjointClasses import A70DisjointClasses
 
@@ -37,7 +38,7 @@ from A70DisjointClasses import A70DisjointClasses
 
 all_stats = [A1FunctionalProperties, A2InverseFunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching,
              A14PropertyRanges, A23UniversalQuantifications, A32MinimumUnqualifiedCardinality, A33MinimumQualifiedCardinality, A34MaximumUnqualifiedCardinality, A35MaximumQualifiedCardinality,
-             A69DisjointProperties, A70DisjointClasses]
+             A57AsymmetricProperties, A69DisjointProperties, A70DisjointClasses]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []

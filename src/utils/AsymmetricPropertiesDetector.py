@@ -2,7 +2,7 @@
 from RestrictionTypeDetector import RestrictionTypeDetector
 from RestrictionTypeDetector import TYPE_INT
 
-class PropertyRangeDetector(RestrictionTypeDetector):
+class AsymmetricPropertiesDetector(RestrictionTypeDetector):
     """
     This class serves as interface for all Restriction Type Statistics of range expressions.
     It defines the statistical metric amount.
@@ -11,8 +11,8 @@ class PropertyRangeDetector(RestrictionTypeDetector):
     their computation and call the set* methods of this class here.
     """
     def __init__(self):
-        super(PropertyRangeDetector, self).__init__()
+        super(AsymmetricPropertiesDetector, self).__init__()
         self.addResult("amount", 0, TYPE_INT)
 
-    def setAmountDomainProperties(self, amount):
+    def setAmountAsymmetricProperties(self, amount):
         self.addResult("amount", amount, TYPE_INT)
