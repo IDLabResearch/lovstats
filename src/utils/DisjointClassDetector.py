@@ -1,5 +1,7 @@
 
 from RestrictionTypeDetector import RestrictionTypeDetector
+from RestrictionTypeDetector import TYPE_INT
+from RestrictionTypeDetector import TYPE_FLOAT
 
 class DisjointClassDetector(RestrictionTypeDetector):
     """
@@ -11,30 +13,30 @@ class DisjointClassDetector(RestrictionTypeDetector):
     """
     def __init__(self):
         super(DisjointClassDetector, self).__init__()
-        self.addResult("amount", 0, "int")
-        self.addResult("average", 0.0, "float")
-        self.addResult("median", 0.0, "float")
-        self.addResult("min", 0, "int")
-        self.addResult("max", 0, "int")
+        self.addResult("amount", 0, TYPE_INT)
+        self.addResult("average", 0.0, TYPE_FLOAT)
+        self.addResult("median", 0.0, TYPE_FLOAT)
+        self.addResult("min", 0, TYPE_INT)
+        self.addResult("max", 0, TYPE_INT)
 
     def setAmountDisjointProperties(self, amount):
-        self.addResult("amount", amount, "int")
+        self.addResult("amount", amount, TYPE_INT)
 
     def setAverageDisjoint(self, average):
-        self.addResult("average", average, "float")
+        self.addResult("average", average, TYPE_FLOAT)
 
     def setMedianDisjoint(self, median):
-        self.addResult("median", median, "float")
+        self.addResult("median", median, TYPE_FLOAT)
 
     def setMinDisjoint(self, min):
-        self.addResult("min", min, "int")
+        self.addResult("min", min, TYPE_INT)
 
     def setMaxDisjoint(self, max):
-        self.addResult("max", max, "int")
+        self.addResult("max", max, TYPE_INT)
 
     def setAll(self, amount, average, median, min, max):
-        self.addResult("amount", amount, "int")
-        self.addResult("average", average, "float")
-        self.addResult("median", median, "float")
-        self.addResult("min", min, "int")
-        self.addResult("max", max, "int")
+        self.addResult("amount", amount, TYPE_INT)
+        self.addResult("average", average, TYPE_FLOAT)
+        self.addResult("median", median, TYPE_FLOAT)
+        self.addResult("min", min, TYPE_INT)
+        self.addResult("max", max, TYPE_INT)

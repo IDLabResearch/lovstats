@@ -12,7 +12,7 @@ class InverseFunctionalPropertyDetector(RestrictionTypeDetector):
     """
     def __init__(self):
         super(InverseFunctionalPropertyDetector, self).__init__()
-        self.addResult("amount", 0, "int")
+        self.addResult("amount", 0, TYPE_INT)
 
     def setAmountFunctionalProperties(self, amount):
         self.addResult("amount", amount, TYPE_INT)
