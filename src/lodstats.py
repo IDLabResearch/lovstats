@@ -187,8 +187,8 @@ if options.void:
     
 
 rdf = rdflib.Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#')
-rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema#>')
-skos = rdflib.Namespace('http://www.w3.org/2004/02/skos/core#>')
+rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema#')
+skos = rdflib.Namespace('http://www.w3.org/2004/02/skos/core#')
 xsd = rdflib.Namespace('http://www.w3.org/2001/XMLSchema#')
 qb = rdflib.Namespace("http://purl.org/linked-data/cube#")
 lovc = rdflib.Namespace("http://example.org/lovcube#")
