@@ -191,8 +191,9 @@ rdfs = rdflib.Namespace('http://www.w3.org/2000/01/rdf-schema#')
 skos = rdflib.Namespace('http://www.w3.org/2004/02/skos/core#')
 xsd = rdflib.Namespace('http://www.w3.org/2001/XMLSchema#')
 qb = rdflib.Namespace("http://purl.org/linked-data/cube#")
-lovc = rdflib.Namespace("http://example.org/lovcube#")
+lovc = rdflib.Namespace("https://w3id.org/lovcube/ns/lovcube#")
 lrd = rdflib.Namespace('http://example.com/lovrestrictiondata#')
+prov = rdflib.Namespace('http://www.w3.org/ns/prov#')
 lovstats = rdflib.Namespace('http://example.com/lovstats#')
 sdmx_attribute = rdflib.Namespace('http://purl.org/linked-data/sdmx/2009/attribute#')
 sdmx_concept = rdflib.Namespace('http://purl.org/linked-data/sdmx/2009/concept#')
@@ -203,25 +204,55 @@ if not options.void:
     if not options.count:
         #print("Results (from custom code):")
         #pprint(rdf_stats.get_stats_results())
+        executionTime = datetime.datetime.utcnow()
         g=rdflib.Graph()
         dataset = rdflib.BNode()
         g.add((dataset, rdflib.RDF.type, qb.DataSet))
+        g.add((dataset, rdflib.RDF.type, lovc.Dataset))
+        g.add((dataset, rdflib.RDF.type, prov.Entity))
         g.add((dataset, qb.structure, lrd['lovstats2018datastructure']))
 
+        # Add provenance
+
+        # prov generation activity
+        provGeneration = rdflib.BNode()
+        provGenerationActivity = rdflib.BNode()
+        g.add((provGenerationActivity, rdflib.RDF.type, prov.Activity))
+
+        # prov qualified generation (which defines type and related activity)
+        g.add((provGeneration, rdflib.RDF.type, prov.Generation))
+        g.add((provGeneration, rdflib.RDF.type, prov.InstantaneousEvent))
+        g.add((provGeneration, prov.atTime, rdflib.Literal(executionTime)))
+        g.add((provGeneration, prov.activity, provGenerationActivity))
+
+        # link dataset to generation activity
+        g.add((provGenerationActivity, rdflib.RDF.type, prov.Activity))
+        g.add((dataset, prov.qualifiedGeneration, provGeneration))
+
+
+        # Add observations
         index = 0
         for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
-            observ = rdflib.BNode()
-            g.add((observ, rdflib.RDF.type, qb.Observation))
-            g.add((observ, qb.dataSet, dataset))
-            g.add((observ, lrd['execution-time'], rdflib.Literal("")))
-            g.add((observ, lrd['ontology-version'], rdflib.Literal("")))
             for detectors_name,detectors_dict in stat_dict.get('detectors', {}).iteritems():
-                g.add((observ, lrd['restriction-type'], lrd[detectors_name]))
-                g.add((observ, lrd.implementation, lrd[detectors_dict.get('implementation', '')]))
-                g.add((observ, lrd.detector, lrd[detectors_dict.get('version', '')]))
                 for results_name,results_dict in detectors_dict.get('results', {}).iteritems():
+                    observ = rdflib.BNode()
+                    g.add((observ, rdflib.RDF.type, qb.Observation))
+                    g.add((observ, rdflib.RDF.type, prov.Entity))
+                    g.add((observ, rdflib.RDF.type, lovc.RestrictionTypeStatistic))
+                    g.add((observ, qb.dataSet, dataset))
+                    g.add((observ, lrd['executionTimeDimension'], rdflib.Literal(executionTime)))
+                    g.add((observ, lrd['ontologyVersionDimension'], rdflib.Literal("")))
+                    g.add((observ, lrd['restrictionTypeDimension'], lrd[detectors_name]))
+                    g.add((observ, lrd['implementationDimension'], lrd[detectors_dict.get('implementation', '')]))
+                    g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('detector', '')]))
                     g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=getDataType(results_dict.get('type', 'string')))))
-        #    print("\t%s" % stat_name)
+
+                    # link observations to generation activity
+                    g.add((observ, prov.qualifiedGeneration, provGeneration))
+
+
+
+                    #    print("\t%s" % stat_name)
         #    for subname, result in stat_dict.iteritems():
         #        if type(result) == dict or type(result) == list:
         #            if subname in ('usage_count'):
