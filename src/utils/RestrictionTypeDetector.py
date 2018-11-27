@@ -1,8 +1,8 @@
 
-
-TYPE_INT="int"
-TYPE_FLOAT="float"
-TYPE_BOOLEAN="boolean"
+import rdflib
+TYPE_INT=rdflib.XSD.integer
+TYPE_FLOAT=rdflib.XSD.float
+TYPE_BOOLEAN=rdflib.XSD.boolean
 MEASURE_OCCURRENCE="restrictionTypeOccurrence"
 MEASURE_HIERARCHY_OCCURRENCE="hierarchyOccurrence"
 MEASURE_HIERARCHY_MIN_DEPTH="minHierarchyDepth"

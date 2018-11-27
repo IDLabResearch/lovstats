@@ -253,7 +253,7 @@ if not options.void:
                     g.add((observ, lrd['restrictionTypeDimension'], lrd[detectors_name]))
                     g.add((observ, lrd['implementationDimension'], lrd[detectors_dict.get('implementation', '')]))
                     g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('version', '')]))
-                    g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=getDataType(results_dict.get('type', 'string')))))
+                    g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=results_dict.get('type', 'string'))))
 
                     # link observations to generation activity
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
