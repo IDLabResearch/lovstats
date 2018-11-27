@@ -15,13 +15,10 @@ class MaxQualifiedCardinalityDetectorOwlMaxQualifiedCardinality(MaxQualifiedCard
             self.amount += 1
 
     def getName(self):
-        return "OwlMaxQualifiedCardinality"
+        return "maximumQualifiedCardinalityDetector"
 
     def getVersion(self):
-        return "OwlMaxQualifiedCardinality-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "maximumQualifiedCardinalityDetector-v1"
 
     def compute(self):
         self.setAmountQualifiedMaxCardinality(self.amount)

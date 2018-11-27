@@ -15,13 +15,10 @@ class MinUnqualifiedCardinalityDetectorOwlMinCardinality(MinUnqualifiedCardinali
             self.amount += 1
 
     def getName(self):
-        return "OwlMinCardinality"
+        return "minimumUnqualifiedCardinalityDetectorOwl"
 
     def getVersion(self):
-        return "OwlMinCardinality-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "minimumUnqualifiedCardinalityDetectorOwl-v1"
 
     def compute(self):
         self.setAmountUnqualifiedMinCardinality(self.amount)

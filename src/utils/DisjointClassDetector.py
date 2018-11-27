@@ -2,6 +2,7 @@
 from RestrictionTypeDetector import RestrictionTypeDetector
 from RestrictionTypeDetector import TYPE_INT
 from RestrictionTypeDetector import TYPE_FLOAT
+from RestrictionTypeDetector import MEASURE_OCCURRENCE
 
 class DisjointClassDetector(RestrictionTypeDetector):
     """
@@ -13,14 +14,14 @@ class DisjointClassDetector(RestrictionTypeDetector):
     """
     def __init__(self):
         super(DisjointClassDetector, self).__init__()
-        self.addResult("amount", 0, TYPE_INT)
-        self.addResult("average", 0.0, TYPE_FLOAT)
-        self.addResult("median", 0.0, TYPE_FLOAT)
-        self.addResult("min", 0, TYPE_INT)
-        self.addResult("max", 0, TYPE_INT)
+        self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
+        #self.addResult("average", 0.0, TYPE_FLOAT)
+        #self.addResult("median", 0.0, TYPE_FLOAT)
+        #self.addResult("min", 0, TYPE_INT)
+        #self.addResult("max", 0, TYPE_INT)
 
     def setAmountDisjointProperties(self, amount):
-        self.addResult("amount", amount, TYPE_INT)
+        self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)
 
     def setAverageDisjoint(self, average):
         self.addResult("average", average, TYPE_FLOAT)
@@ -35,8 +36,8 @@ class DisjointClassDetector(RestrictionTypeDetector):
         self.addResult("max", max, TYPE_INT)
 
     def setAll(self, amount, average, median, min, max):
-        self.addResult("amount", amount, TYPE_INT)
-        self.addResult("average", average, TYPE_FLOAT)
-        self.addResult("median", median, TYPE_FLOAT)
-        self.addResult("min", min, TYPE_INT)
-        self.addResult("max", max, TYPE_INT)
+        self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)
+        #self.addResult("average", average, TYPE_FLOAT)
+        #self.addResult("median", median, TYPE_FLOAT)
+        #self.addResult("min", min, TYPE_INT)
+        #self.addResult("max", max, TYPE_INT)

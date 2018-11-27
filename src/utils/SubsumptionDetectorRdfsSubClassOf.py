@@ -30,35 +30,24 @@ class SubsumptionDetectorRdfsSubClassOf(SubsumptionDetector):
             self.c += 1
 
     def getName(self):
-        return "RdfsSubClassOf"
+        return "subsumptionDetectorRdfsSubClassOf"
 
     def getVersion(self):
-        return "RdfsSubClassOf-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "subsumptionDetectorRdfsSubClassOf-v1"
 
     def compute(self):
 
         hierarchies_depths = util_functions.compute_depths(self.graph, self.roots)
 
-        self.results['amount_hierarchies'] = len(hierarchies_depths)
-        self.results['amount_subclasses'] = self.c
         if hierarchies_depths:
             average_depth=sum(hierarchies_depths) / float(len(hierarchies_depths))
         else:
             average_depth=0
-        if hierarchies_depths:
-            self.results['median_depth'] = median(hierarchies_depths)
-            median_depth = median(hierarchies_depths)
-        else:
-            self.results['median_depth'] = 0
-            median_depth = 0
 
         self.setAll(amount_hierarchies=len(hierarchies_depths),
                     amount_subclasses=self.c,
                     average=average_depth,
-                    median=median_depth,
+                    median=median(hierarchies_depths) if hierarchies_depths else 0,
                     min=min(hierarchies_depths) if hierarchies_depths else 0,
                     max=max(hierarchies_depths) if hierarchies_depths else 0)
 

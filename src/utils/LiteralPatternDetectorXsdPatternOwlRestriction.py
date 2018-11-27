@@ -23,13 +23,10 @@ class LiteralPatternDetectorXsdPatternOwlRestriction(LiteralPatternDetector):
         self.restriction_list_creator.count(s, p, o, statement)
 
     def getName(self):
-        return "XsdPatternOwlRestrictionDataType"
+        return "literalPatternMatchingDetectorXsdPatternOwlRestriction"
 
     def getVersion(self):
-        return "XsdPatternOwlRestrictionDataType-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "literalPatternMatchingDetectorXsdPatternOwlRestriction-v1"
 
     def compute(self):
         self.restriction_list_creator.compute()

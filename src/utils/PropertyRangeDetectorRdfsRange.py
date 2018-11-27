@@ -15,13 +15,10 @@ class PropertyRangeDetectorRdfsRange(PropertyRangeDetector):
             self.amount += 1
 
     def getName(self):
-        return "RdfsRange"
+        return "propertyRangeDetectorRdfsRange"
 
     def getVersion(self):
-        return "RdfsRange-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "propertyRangeDetectorRdfsRange-v1"
 
     def compute(self):
         self.setAmountDomainProperties(self.amount)

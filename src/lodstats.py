@@ -206,6 +206,14 @@ if not options.void:
         #pprint(rdf_stats.get_stats_results())
         executionTime = datetime.datetime.utcnow()
         g=rdflib.Graph()
+        g.namespace_manager.bind('prov', prov)
+        g.namespace_manager.bind('lovc', lovc)
+        g.namespace_manager.bind('lrd', lrd)
+        g.namespace_manager.bind('qb', qb)
+        g.namespace_manager.bind('xsd', xsd)
+        g.namespace_manager.bind('rdf', rdf)
+        g.namespace_manager.bind('rdfs', rdfs)
+
         dataset = rdflib.BNode()
         g.add((dataset, rdflib.RDF.type, qb.DataSet))
         g.add((dataset, rdflib.RDF.type, lovc.Dataset))
@@ -244,7 +252,7 @@ if not options.void:
                     g.add((observ, lrd['ontologyVersionDimension'], rdflib.Literal("")))
                     g.add((observ, lrd['restrictionTypeDimension'], lrd[detectors_name]))
                     g.add((observ, lrd['implementationDimension'], lrd[detectors_dict.get('implementation', '')]))
-                    g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('detector', '')]))
+                    g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('version', '')]))
                     g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=getDataType(results_dict.get('type', 'string')))))
 
                     # link observations to generation activity

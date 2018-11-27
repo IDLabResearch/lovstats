@@ -3,6 +3,12 @@
 TYPE_INT="int"
 TYPE_FLOAT="float"
 TYPE_BOOLEAN="boolean"
+MEASURE_OCCURRENCE="restrictionTypeOccurrence"
+MEASURE_HIERARCHY_OCCURRENCE="hierarchyOccurrence"
+MEASURE_HIERARCHY_MIN_DEPTH="minHierarchyDepth"
+MEASURE_HIERARCHY_MAX_DEPTH="maxHierarchyDepth"
+MEASURE_HIERARCHY_AVERAGE_DEPTH="averageHierarchyDepth"
+MEASURE_HIERARCHY_MEDIAN_DEPTH="medianHierarchyDepth"
 
 allowed_types=[TYPE_INT, TYPE_FLOAT, TYPE_BOOLEAN]
 
@@ -31,15 +37,12 @@ class RestrictionTypeDetector(object):
     def getDetectorOutput(self):
         results = {
             "version": self.getVersion(),
-            "implementation": self.getImplementation(),
+            "implementation": "lodstatsExtension",
             "results": self.results
         }
         return results
 
     def getVersion(self):
-        raise NotImplementedError
-
-    def getImplementation(self):
         raise NotImplementedError
 
     def addResult(self, name, value, type):

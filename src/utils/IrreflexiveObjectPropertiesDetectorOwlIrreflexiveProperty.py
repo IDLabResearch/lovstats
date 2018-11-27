@@ -18,13 +18,10 @@ class IrreflexiveObjectPropertiesDetectorOwlIrreflexiveProperty(IrreflexiveObjec
             self.amount += 1
 
     def getName(self):
-        return "OwlIrreflexiveProperty"
+        return "irreflexivePropertiesDetectorOwlIrreflexiveProperty"
 
     def getVersion(self):
-        return "OwlIrreflexiveProperty-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "irreflexivePropertiesDetectorOwlIrreflexiveProperty-v1"
 
     def compute(self):
         self.setAmountIrreflexiveProperties(self.amount)

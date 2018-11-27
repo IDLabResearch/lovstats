@@ -16,20 +16,18 @@ class DisjointPropertyDetectorOwlDisjointWith(DisjointClassDetector):
             self.propertyStats.count(s, o)
 
     def getName(self):
-        return "OwlClassDisjointWith"
+        return "disjointPropertiesDetectorOwlDisjointWith"
 
     def getVersion(self):
-        return "OwlClassDisjointWith-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "disjointPropertiesDetectorOwlDisjointWith-v1"
 
     def compute(self):
         self.propertyStats.compute()
 
-        self.setAll(amount=self.propertyStats.getAverage(),
-                    average=self.propertyStats.getAverage(),
-                    median=self.propertyStats.getMedian(),
-                    min=self.propertyStats.getMin(),
-                    max=self.propertyStats.getMax())
+        self.setAmountDisjointProperties(self.propertyStats.getAmount())
+        #self.setAll(amount=self.propertyStats.getAverage(),
+        #            average=self.propertyStats.getAverage(),
+        #            median=self.propertyStats.getMedian(),
+        #            min=self.propertyStats.getMin(),
+        #            max=self.propertyStats.getMax())
 

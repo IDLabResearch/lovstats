@@ -18,13 +18,10 @@ class AsymmetricPropertiesDetectorOwlAsymmetricProperty(AsymmetricPropertiesDete
             self.amount += 1
 
     def getName(self):
-        return "OwlAsymmetricProperty"
+        return "asymmetricPropertiesDetectorOwlAsymmetric"
 
     def getVersion(self):
-        return "OwlAsymmetricProperty-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "asymmetricPropertiesDetectorOwlAsymmetricProperty-v1"
 
     def compute(self):
         self.setAmountAsymmetricProperties(self.amount)

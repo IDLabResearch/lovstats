@@ -16,13 +16,10 @@ class FunctionalPropertyDetectorOwlFunctionalProperty(FunctionalPropertyDetector
             self.amount += 1
 
     def getName(self):
-        return "OwlFunctionalProperty"
+        return "functionalPropertiesDetectorOwlFunctionalProperty"
 
     def getVersion(self):
-        return "OwlFunctionalProperty-v1"
-
-    def getImplementation(self):
-        return "LODStatsModule"
+        return "functionalPropertiesDetectorOwlFunctionalProperty-v1"
 
     def compute(self):
         self.setAmountFunctionalProperties(self.amount)
