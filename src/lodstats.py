@@ -265,5 +265,5 @@ if not options.void:
         #        else:
         #            print("\t\t%s: %s" % (subname, result))
             index += 1
-        print g.serialize(format='nt')
+        print g.serialize(format='turtle')
        
