@@ -53,6 +53,7 @@ parser.add_option('-m', '--rdf-model', help='parse and do stats for everything t
 parser.add_option('-s', '--schema-syntax-owl', action='store_true', help='do stats for RDF-Schema, -Syntax, Owl')
 parser.add_option('-d', '--debug', action='store_true', help='print debugging output')
 parser.add_option('-o', '--other-stats-folder', dest='other_stats_folder', help='Use also this folder to look for stats')
+parser.add_option('-u', '--ontology-uri', dest='ontology_uri', help='The URI of the provided ontology')
 (options, args) = parser.parse_args()
 
 if len(args) == 0:
@@ -153,12 +154,32 @@ def callback_function_statistics(rdf_file):
                     else:
                         print("\t\t%s: %s" % (subname, result))
 
-def getDataType(ref):
-    datadict = {
-        "int": rdflib.XSD.integer,
-        "float": rdflib.XSD.float
+
+def create_dataset(measure_name, datasets, graph, provGeneration, provGenerationActivity):
+
+    # A mapping of measure types to data structure IRIs used in lovstats.ttl
+    measure_to_structure_mappings = {
+        "restrictionTypeOccurrence": "restrictionTypesAmount",
+        "hierarchyOccurrence": "hierarchyAmountDistribution",
+        "minHierarchyDepth": "minHierarchyDepthsDistribution",
+        "maxHierarchyDepth": "maxHierarchyDepthsDistribution",
+        "averageHierarchyDepth": "meanHierarchyDepthsDistribution",
+        "medianHierarchyDepth": "medianHierarchyDepthsDistribution"
     }
-    return datadict.get(ref, rdflib.XSD.string)
+
+    # if already seen, return saved blank node id
+    if measure_name in datasets:
+        return datasets[measure_name]
+    else:
+        dataset = rdflib.BNode()
+        graph.add((dataset, rdflib.RDF.type, qb.DataSet))
+        graph.add((dataset, rdflib.RDF.type, lovc.Dataset))
+        graph.add((dataset, rdflib.RDF.type, prov.Entity))
+        graph.add((dataset, qb.structure, lrd[measure_to_structure_mappings[measure_name]]))
+        graph.add((dataset, prov.qualifiedGeneration, provGeneration))
+        graph.add((dataset, prov.wasGeneratedBy, provGenerationActivity))
+        datasets[measure_name] = dataset
+        return dataset
 
 ####################
 # Processing logic #
@@ -214,11 +235,9 @@ if not options.void:
         g.namespace_manager.bind('rdf', rdf)
         g.namespace_manager.bind('rdfs', rdfs)
 
-        dataset = rdflib.BNode()
-        g.add((dataset, rdflib.RDF.type, qb.DataSet))
-        g.add((dataset, rdflib.RDF.type, lovc.Dataset))
-        g.add((dataset, rdflib.RDF.type, prov.Entity))
-        g.add((dataset, qb.structure, lrd['lovstats2018datastructure']))
+        # create a dictionary to hold a dataset for reach measure
+        all_datasets = {}
+
 
         # Add provenance
 
@@ -233,28 +252,36 @@ if not options.void:
         g.add((provGeneration, prov.atTime, rdflib.Literal(executionTime)))
         g.add((provGeneration, prov.activity, provGenerationActivity))
 
-        # link dataset to generation activity
+        # Create a generation activity
         g.add((provGenerationActivity, rdflib.RDF.type, prov.Activity))
-        g.add((dataset, prov.qualifiedGeneration, provGeneration))
-
 
         # Add observations
         index = 0
+
+        # Loop over restriction types:
         for stat_name,stat_dict in rdf_stats.get_stats_results().iteritems():
+            # Loop over different detectors:
             for detectors_name,detectors_dict in stat_dict.get('detectors', {}).iteritems():
+                # Loop over different results:
                 for results_name,results_dict in detectors_dict.get('results', {}).iteritems():
                     observ = rdflib.BNode()
+
+                    # Create a dataset for each measure (the function returns the blank node id if the dataset was already created)
+                    dataset = create_dataset(results_name, all_datasets, g, provGeneration, provGenerationActivity)
                     g.add((observ, rdflib.RDF.type, qb.Observation))
                     g.add((observ, rdflib.RDF.type, prov.Entity))
                     g.add((observ, rdflib.RDF.type, lovc.RestrictionTypeStatistic))
                     g.add((observ, qb.dataSet, dataset))
                     g.add((observ, lrd['executionTimeDimension'], rdflib.Literal(executionTime)))
-                    g.add((observ, lrd['ontologyVersionDimension'], rdflib.Literal("")))
                     g.add((observ, lrd['restrictionTypeDimension'], lrd[detectors_name]))
                     g.add((observ, lrd['implementationDimension'], lrd[detectors_dict.get('implementation', '')]))
                     g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('version', '')]))
                     g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=results_dict.get('type', 'string'))))
 
+                    if options.ontology_uri:
+                        g.add((observ, lrd['ontologyVersionDimension'], rdflib.URIRef(options.ontology_uri)))
+                    else:
+                        g.add((observ, lrd['ontologyVersionDimension'], rdflib.Literal("")))
                     # link observations to generation activity
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
 
