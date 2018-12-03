@@ -54,6 +54,7 @@ parser.add_option('-s', '--schema-syntax-owl', action='store_true', help='do sta
 parser.add_option('-d', '--debug', action='store_true', help='print debugging output')
 parser.add_option('-o', '--other-stats-folder', dest='other_stats_folder', help='Use also this folder to look for stats')
 parser.add_option('-u', '--ontology-uri', dest='ontology_uri', help='The URI of the provided ontology')
+parser.add_option('-r', '--result-file', dest='result_file', help='The name of the file where the statistics should be stored')
 (options, args) = parser.parse_args()
 
 if len(args) == 0:
@@ -234,6 +235,7 @@ if not options.void:
         g.namespace_manager.bind('xsd', xsd)
         g.namespace_manager.bind('rdf', rdf)
         g.namespace_manager.bind('rdfs', rdfs)
+        g.namespace_manager.bind('sdmx-attribute', sdmx_attribute)
 
         # create a dictionary to hold a dataset for reach measure
         all_datasets = {}
@@ -268,6 +270,8 @@ if not options.void:
 
                     # Create a dataset for each measure (the function returns the blank node id if the dataset was already created)
                     dataset = create_dataset(results_name, all_datasets, g, provGeneration, provGenerationActivity)
+
+                    # Create the observation
                     g.add((observ, rdflib.RDF.type, qb.Observation))
                     g.add((observ, rdflib.RDF.type, prov.Entity))
                     g.add((observ, rdflib.RDF.type, lovc.RestrictionTypeStatistic))
@@ -285,20 +289,7 @@ if not options.void:
                     # link observations to generation activity
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
 
-
-
-                    #    print("\t%s" % stat_name)
-        #    for subname, result in stat_dict.iteritems():
-        #        if type(result) == dict or type(result) == list:
-        #            if subname in ('usage_count'):
-        #                print("\t\t%s:" % subname)
-        #                for subsubname, subresult in result.iteritems():
-        #                    #if subresult > 0:
-        #                    print("\t\t\t%s: %s" % (subsubname, subresult))
-        #            else:
-        #                print("\t\tlen(%s): %d" % (subname, len(result)))
-        #        else:
-        #            print("\t\t%s: %s" % (subname, result))
             index += 1
-        print g.serialize(format='turtle')
-       
+        f = open(options.result_file, "w")
+        f.write(g.serialize(format='turtle'))
+        exit(0)
