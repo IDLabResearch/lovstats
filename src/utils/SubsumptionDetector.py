@@ -28,6 +28,9 @@ class SubsumptionDetector(RestrictionTypeDetector):
         self.addResult(MEASURE_HIERARCHY_MIN_DEPTH, 0, TYPE_INT)
         self.addResult(MEASURE_HIERARCHY_MAX_DEPTH, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "subsumption"
+
     def setAmountHierarchies(self, amount):
         self.addResult(MEASURE_HIERARCHY_OCCURRENCE, amount, TYPE_INT)
 

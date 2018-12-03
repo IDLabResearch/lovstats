@@ -20,6 +20,9 @@ class DisjointClassDetector(RestrictionTypeDetector):
         #self.addResult("min", 0, TYPE_INT)
         #self.addResult("max", 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "disjointClasses"
+
     def setAmountDisjointProperties(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)
 

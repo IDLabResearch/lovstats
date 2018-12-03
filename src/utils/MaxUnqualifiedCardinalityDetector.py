@@ -15,5 +15,8 @@ class MaxUnqualifiedCardinalityDetector(RestrictionTypeDetector):
         super(MaxUnqualifiedCardinalityDetector, self).__init__()
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "maximumUnqualifiedCardinality"
+
     def setAmountUnqualifiedMaxCardinality(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)

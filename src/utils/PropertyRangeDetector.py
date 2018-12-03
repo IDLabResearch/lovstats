@@ -15,5 +15,8 @@ class PropertyRangeDetector(RestrictionTypeDetector):
         super(PropertyRangeDetector, self).__init__()
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "propertyRanges"
+
     def setAmountDomainProperties(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)

@@ -15,5 +15,8 @@ class FunctionalPropertyDetector(RestrictionTypeDetector):
         super(FunctionalPropertyDetector, self).__init__()
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "functionalProperties"
+
     def setAmountFunctionalProperties(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)

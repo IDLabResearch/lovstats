@@ -15,5 +15,8 @@ class MinUnqualifiedCardinalityDetector(RestrictionTypeDetector):
         super(MinUnqualifiedCardinalityDetector, self).__init__()
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "minimumUnqualifiedCardinality"
+
     def setAmountUnqualifiedMinCardinality(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)

@@ -15,5 +15,8 @@ class LiteralPatternDetector(RestrictionTypeDetector):
         super(LiteralPatternDetector, self).__init__()
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
 
+    def getRestrictionType(self):
+        return "literalPatternMatching"
+
     def setAmountLiteralPatternRestrictions(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)

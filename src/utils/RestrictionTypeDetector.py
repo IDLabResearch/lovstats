@@ -37,12 +37,16 @@ class RestrictionTypeDetector(object):
     def getDetectorOutput(self):
         results = {
             "version": self.getVersion(),
+            "restriction-type": self.getRestrictionType(),
             "implementation": "lodstatsExtension",
             "results": self.results
         }
         return results
 
     def getVersion(self):
+        raise NotImplementedError
+
+    def getRestrictionType(self):
         raise NotImplementedError
 
     def addResult(self, name, value, type):
