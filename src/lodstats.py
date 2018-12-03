@@ -290,6 +290,8 @@ if not options.void:
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
 
             index += 1
+
         f = open(options.result_file, "w")
         f.write(g.serialize(format='turtle'))
         exit(0)
+
