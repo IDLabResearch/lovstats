@@ -1,6 +1,7 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.SimplePropertyStats import SimplePropertyStats
 from utils.DisjointClassDetectorOwlDisjointWith import DisjointClassDetectorOwlDisjointWith
+from utils.DisjointClassDetectorOwlAllDisjointClasses import DisjointClassDetectorOwlAllDisjointClasses
 from utils import util_functions
 
 class A70DisjointClasses(RDFStatInterface):
@@ -9,7 +10,7 @@ class A70DisjointClasses(RDFStatInterface):
     def __init__(self, results):
         super(A70DisjointClasses, self).__init__(results)
 
-        self.detectors = [DisjointClassDetectorOwlDisjointWith()]
+        self.detectors = [DisjointClassDetectorOwlAllDisjointClasses(), DisjointClassDetectorOwlDisjointWith()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
             for d in self.detectors:
