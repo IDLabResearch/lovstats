@@ -24,6 +24,7 @@ from A2InverseFunctionalProperties import A2InverseFunctionalProperties
 from A4Subsumption import A4Subsumption
 from A13PropertyDomains import A13PropertyDomains
 from A14PropertyRanges import A14PropertyRanges
+from A17LiteralRanges import A17LiteralRanges
 from A20LiteralPatternMatching import A20LiteralPatternMatching
 from A23UniversalQuantifications import A23UniversalQuantifications
 from A32MinimumUnqualifiedCardinality import A32MinimumUnqualifiedCardinality
@@ -39,7 +40,7 @@ from A70DisjointClasses import A70DisjointClasses
 
 
 all_stats = [A1FunctionalProperties, A2InverseFunctionalProperties, A4Subsumption, A13PropertyDomains, A20LiteralPatternMatching,
-             A14PropertyRanges, A23UniversalQuantifications, A32MinimumUnqualifiedCardinality, A33MinimumQualifiedCardinality,
+             A14PropertyRanges, A17LiteralRanges, A23UniversalQuantifications, A32MinimumUnqualifiedCardinality, A33MinimumQualifiedCardinality,
              A34MaximumUnqualifiedCardinality, A35MaximumQualifiedCardinality, A36ExactUnqualifiedCardinality,
              A57AsymmetricProperties, A64IrreflexiveObjectProperties, A69DisjointProperties, A70DisjointClasses]
 

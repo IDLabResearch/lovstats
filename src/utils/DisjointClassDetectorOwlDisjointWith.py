@@ -24,7 +24,7 @@ class DisjointClassDetectorOwlDisjointWith(DisjointClassDetector):
     def compute(self):
         self.propertyStats.compute()
 
-        self.setAmountDisjointProperties(self.propertyStats.getAmount())
+        self.setAmountDisjointClasses(self.propertyStats.getAmount())
         #self.setAll(amount=self.propertyStats.getAverage(),
         #            average=self.propertyStats.getAverage(),
         #            median=self.propertyStats.getMedian(),

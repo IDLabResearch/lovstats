@@ -10,7 +10,7 @@ services:
       - "./src/lodstats.py:/LODStats/scripts/lodstats"
       - "./input/:/input"
       - "./output/:/output"
-      - "../lovver/ontologies/:/lovver"
+      - "../lovver/ontologies-2018-12-05/:/lovver"
     network_mode: bridge
   lodstats-test:
     build: docker-test

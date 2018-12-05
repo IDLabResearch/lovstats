@@ -23,7 +23,7 @@ class DisjointClassDetector(RestrictionTypeDetector):
     def getRestrictionType(self):
         return "disjointClasses"
 
-    def setAmountDisjointProperties(self, amount):
+    def setAmountDisjointClasses(self, amount):
         self.addResult(MEASURE_OCCURRENCE, amount, TYPE_INT)
 
     def setAverageDisjoint(self, average):

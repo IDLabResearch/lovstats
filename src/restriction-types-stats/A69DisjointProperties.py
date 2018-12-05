@@ -2,8 +2,8 @@ from numpy import median
 
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.SimplePropertyStats import SimplePropertyStats
 from utils.DisjointPropertyDetectorOwlDisjointWith import DisjointPropertyDetectorOwlDisjointWith
+from utils.DisjointPropertyDetectorOwlAllDisjointProperties import DisjointPropertyDetectorOwlAllDisjointProperties
 from utils import util_functions
 
 class A69DisjointProperties(RDFStatInterface):
@@ -12,7 +12,7 @@ class A69DisjointProperties(RDFStatInterface):
     def __init__(self, results):
         super(A69DisjointProperties, self).__init__(results)
 
-        self.detectors = [DisjointPropertyDetectorOwlDisjointWith()]
+        self.detectors = [DisjointPropertyDetectorOwlDisjointWith(), DisjointPropertyDetectorOwlAllDisjointProperties()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
             for d in self.detectors:

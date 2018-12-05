@@ -44,4 +44,4 @@ class DisjointClassDetectorOwlAllDisjointClasses(DisjointClassDetector):
                 n = len(memberList[s])
                 disjointClassesCounter += ((n*n)-n)/2
 
-        self.setAmountDisjointProperties(disjointClassesCounter)
+        self.setAmountDisjointClasses(disjointClassesCounter)

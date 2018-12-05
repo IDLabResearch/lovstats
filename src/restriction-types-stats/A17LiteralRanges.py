@@ -1,13 +1,13 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.LiteralPatternDetectorXsdPatternOwlRestriction import LiteralPatternDetectorXsdPatternOwlRestriction
+from utils.LiteralRangesDetectorXsdMinMaxOwlRestriction import LiteralRangesDetectorXsdMinMaxOwlRestriction
 from utils import util_functions
 
-class A20LiteralPatternMatching(RDFStatInterface):
-    """Create statistics for literal pattern matching"""
+class A17LiteralRanges(RDFStatInterface):
+    """Create statistics for literal ranges"""
 
     def __init__(self, results):
-        super(A20LiteralPatternMatching, self).__init__(results)
-        self.detectors = [LiteralPatternDetectorXsdPatternOwlRestriction()]
+        super(A17LiteralRanges, self).__init__(results)
+        self.detectors = [LiteralRangesDetectorXsdMinMaxOwlRestriction()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
         for d in self.detectors:

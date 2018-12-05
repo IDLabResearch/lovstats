@@ -1,8 +1,8 @@
 
-from DisjointClassDetector import DisjointClassDetector
+from utils.DisjointPropertyDetector import DisjointPropertyDetector
 from SimplePropertyStats import SimplePropertyStats
 
-class DisjointPropertyDetectorOwlDisjointWith(DisjointClassDetector):
+class DisjointPropertyDetectorOwlDisjointWith(DisjointPropertyDetector):
     """
     This class implements the detection of the owl:propertyDisjointWith Restriction Type Expression.
     For further information have a look at the parent class.
