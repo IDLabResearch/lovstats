@@ -30,7 +30,7 @@ class LiteralRangesDetectorXsdMinMaxOwlRestriction(LiteralRangesDetector):
         return "literalRangesDetectorXsdMinMaxOwlRestriction"
 
     def getVersion(self):
-        return "literalRangesDetectorXsdMinMaxOwlRestriction-v1"
+        return "literalRangesLODStatsDetectorXsdMinMaxOwlRestriction-v1"
 
     def compute(self):
         self.restriction_list_creator.compute()

@@ -33,7 +33,7 @@ class SubsumptionDetectorRdfsSubClassOf(SubsumptionDetector):
         return "subsumptionDetectorRdfsSubClassOf"
 
     def getVersion(self):
-        return "subsumptionDetectorRdfsSubClassOf-v1"
+        return "subsumptionLODStatsDetectorRdfsSubClassOf-v1"
 
     def compute(self):
 

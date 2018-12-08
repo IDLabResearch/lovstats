@@ -19,7 +19,7 @@ class FunctionalPropertyDetectorOwlFunctionalProperty(FunctionalPropertyDetector
         return "functionalPropertiesDetectorOwlFunctionalProperty"
 
     def getVersion(self):
-        return "functionalPropertiesDetectorOwlFunctionalProperty-v1"
+        return "functionalPropertiesLODStatsDetectorOwlFunctionalProperty-v1"
 
     def compute(self):
         self.setAmountFunctionalProperties(self.amount)

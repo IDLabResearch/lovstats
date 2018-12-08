@@ -18,7 +18,7 @@ class MaxUnqualifiedCardinalityDetectorOwlMaxCardinality(MaxUnqualifiedCardinali
         return "maximumUnqualifiedCardinalityDetector"
 
     def getVersion(self):
-        return "maximumUnqualifiedCardinalityDetectorOwl-v1"
+        return "maximumUnqualifiedCardinalityLODStatsDetectorOwl-v1"
 
     def compute(self):
         self.setAmountUnqualifiedMaxCardinality(self.amount)

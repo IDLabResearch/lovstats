@@ -26,7 +26,7 @@ class LiteralPatternDetectorXsdPatternOwlRestriction(LiteralPatternDetector):
         return "literalPatternMatchingDetectorXsdPatternOwlRestriction"
 
     def getVersion(self):
-        return "literalPatternMatchingDetectorXsdPatternOwlRestriction-v1"
+        return "literalPatternMatchingLODStatsDetectorXsdPatternOwlRestriction-v1"
 
     def compute(self):
         self.restriction_list_creator.compute()

@@ -18,7 +18,7 @@ class MinQualifiedCardinalityDetectorOwlMinQualifiedCardinality(MinQualifiedCard
         return "minimumQualifiedCardinalityDetector"
 
     def getVersion(self):
-        return "minimumQualifiedCardinalityDetector-v1"
+        return "minimumQualifiedCardinalityLODStatsDetector-v1"
 
     def compute(self):
         self.setAmountQualifiedMinCardinality(self.amount)

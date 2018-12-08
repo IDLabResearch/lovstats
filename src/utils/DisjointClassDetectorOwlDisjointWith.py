@@ -19,7 +19,7 @@ class DisjointClassDetectorOwlDisjointWith(DisjointClassDetector):
         return "disjointClassesDetectorOwlDisjointWith"
 
     def getVersion(self):
-        return "disjointClassesDetectorOwlDisjointWith-v1"
+        return "disjointClassesLODStatsDetectorOwlDisjointWith-v1"
 
     def compute(self):
         self.propertyStats.compute()

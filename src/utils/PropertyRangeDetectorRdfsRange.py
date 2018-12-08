@@ -18,7 +18,7 @@ class PropertyRangeDetectorRdfsRange(PropertyRangeDetector):
         return "propertyRangeDetectorRdfsRange"
 
     def getVersion(self):
-        return "propertyRangeDetectorRdfsRange-v1"
+        return "propertyRangeLODStatsDetectorRdfsRange-v1"
 
     def compute(self):
         self.setAmountDomainProperties(self.amount)

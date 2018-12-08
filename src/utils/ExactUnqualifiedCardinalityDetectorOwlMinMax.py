@@ -22,7 +22,7 @@ class ExactUnqualifiedCardinalityDetectorOwlMinMax(ExactUnqualifiedCardinalityDe
         return "exactUnqualifiedCardinalityDetectorOwlMinMax"
 
     def getVersion(self):
-        return "exactUnqualifiedCardinalityDetectorOwlMinMax-v1"
+        return "exactUnqualifiedCardinalityLODStatsDetectorOwlMinMax-v1"
 
     def compute(self):
         # Reduce amount of comparisons by selecting smaller dictionary for outer loop

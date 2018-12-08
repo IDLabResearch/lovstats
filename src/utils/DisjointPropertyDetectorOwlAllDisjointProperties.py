@@ -27,7 +27,7 @@ class DisjointPropertyDetectorOwlAllDisjointProperties(DisjointPropertyDetector)
         return "disjointPropertiesDetectorOwlAllDisjointProperties"
 
     def getVersion(self):
-        return "disjointPropertiesDetectorOwlAllDisjointProperties-v1"
+        return "disjointPropertiesLODStatsDetectorOwlAllDisjointProperties-v1"
 
     def compute(self):
         self.disjoint_properties_list_creator.compute()

@@ -18,7 +18,7 @@ class UniversalQuantificationDetectorOwlAllValuesFrom(UniversalQuantificationDet
         return "universalQuantificationDetectorOwlAllValuesFrom"
 
     def getVersion(self):
-        return "universalQuantificationDetectorOwlAllValuesFrom-v1"
+        return "universalQuantificationLODStatsDetectorOwlAllValuesFrom-v1"
 
     def compute(self):
         self.setAmountUniversalQuantification(self.amount)

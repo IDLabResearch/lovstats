@@ -27,7 +27,7 @@ class DisjointClassDetectorOwlAllDisjointClasses(DisjointClassDetector):
         return "disjointClassesDetectorOwlAllDisjointClasses"
 
     def getVersion(self):
-        return "disjointClassesDetectorOwlAllDisjointClasses-v1"
+        return "disjointClassesLODStatsDetectorOwlAllDisjointClasses-v1"
 
     def compute(self):
         self.disjoint_classes_list_creator.compute()

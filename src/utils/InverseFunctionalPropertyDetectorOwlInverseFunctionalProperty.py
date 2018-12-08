@@ -19,7 +19,7 @@ class InverseFunctionalPropertyDetectorOwlInverseFunctionalProperty(InverseFunct
         return "inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty"
 
     def getVersion(self):
-        return "inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty-v1"
+        return "inverseFunctionalPropertiesLODStatsDetectorOwlInverseFunctionalProperty-v1"
 
     def compute(self):
         self.setAmountFunctionalProperties(self.amount)

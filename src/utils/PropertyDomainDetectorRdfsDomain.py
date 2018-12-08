@@ -18,7 +18,7 @@ class PropertyDomainDetectorRdfsDomain(PropertyDomainDetector):
         return "propertyDomainDetectorRdfsDomain"
 
     def getVersion(self):
-        return "propertyDomainDetectorRdfsDomain-v1"
+        return "propertyDomainLODStatsDetectorRdfsDomain-v1"
 
     def compute(self):
         self.setAmountDomainProperties(self.amount)

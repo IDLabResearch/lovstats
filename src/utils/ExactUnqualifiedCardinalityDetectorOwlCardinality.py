@@ -18,7 +18,7 @@ class ExactUnqualifiedCardinalityDetectorOwlCardinality(ExactUnqualifiedCardinal
         return "exactUnqualifiedCardinalityDetectorOwlCardinality"
 
     def getVersion(self):
-        return "exactUnqualifiedCardinalityDetectorOwlCardinality-v1"
+        return "exactUnqualifiedCardinalityLODStatsDetectorOwlCardinality-v1"
 
     def compute(self):
         self.setAmountUnqualifiedExactCardinality(self.amount)
