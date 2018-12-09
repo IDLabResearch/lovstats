@@ -21,12 +21,12 @@ class SubsumptionDetector(RestrictionTypeDetector):
     def __init__(self):
         super(SubsumptionDetector, self).__init__()
 
-        self.addResult(MEASURE_HIERARCHY_OCCURRENCE, 0, TYPE_INT)
+        #self.addResult(MEASURE_HIERARCHY_OCCURRENCE, 0, TYPE_INT)
         self.addResult(MEASURE_OCCURRENCE, 0, TYPE_INT)
-        self.addResult(MEASURE_HIERARCHY_AVERAGE_DEPTH, 0.0, TYPE_FLOAT)
-        self.addResult(MEASURE_HIERARCHY_MEDIAN_DEPTH, 0.0, TYPE_FLOAT)
-        self.addResult(MEASURE_HIERARCHY_MIN_DEPTH, 0, TYPE_INT)
-        self.addResult(MEASURE_HIERARCHY_MAX_DEPTH, 0, TYPE_INT)
+        #self.addResult(MEASURE_HIERARCHY_AVERAGE_DEPTH, 0.0, TYPE_FLOAT)
+        #self.addResult(MEASURE_HIERARCHY_MEDIAN_DEPTH, 0.0, TYPE_FLOAT)
+        #self.addResult(MEASURE_HIERARCHY_MIN_DEPTH, 0, TYPE_INT)
+        #self.addResult(MEASURE_HIERARCHY_MAX_DEPTH, 0, TYPE_INT)
 
     def getRestrictionType(self):
         return "subsumption"

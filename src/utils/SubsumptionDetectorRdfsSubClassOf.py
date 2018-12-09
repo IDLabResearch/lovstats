@@ -44,11 +44,14 @@ class SubsumptionDetectorRdfsSubClassOf(SubsumptionDetector):
         else:
             average_depth=0
 
-        self.setAll(amount_hierarchies=len(hierarchies_depths),
-                    amount_subclasses=self.c,
-                    average=average_depth,
-                    median=median(hierarchies_depths) if hierarchies_depths else 0,
-                    min=min(hierarchies_depths) if hierarchies_depths else 0,
-                    max=max(hierarchies_depths) if hierarchies_depths else 0)
+        self.setAmountSubclasses(self.c);
+
+        # We are not considering other measures than occurrence in the current version
+        #self.setAll(amount_hierarchies=len(hierarchies_depths),
+        #            amount_subclasses=self.c,
+        #            average=average_depth,
+        #            median=median(hierarchies_depths) if hierarchies_depths else 0,
+        #            min=min(hierarchies_depths) if hierarchies_depths else 0,
+        #            max=max(hierarchies_depths) if hierarchies_depths else 0)
 
 
