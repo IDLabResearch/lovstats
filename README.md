@@ -1,3 +1,6 @@
+# LOVStats
+
+[![DOI](https://zenodo.org/badge/161209581.svg)](https://zenodo.org/badge/latestdoi/161209581)
 
 
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
