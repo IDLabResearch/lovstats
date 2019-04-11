@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from utils.MaxQualifiedCardinalityDetectorOwlMaxQualifiedCardinality import MaxQualifiedCardinalityDetectorOwlMaxQualifiedCardinality
+from utils.ExactQualifiedCardinalityDetectorOwlCardinality import ExactQualifiedCardinalityDetectorOwlCardinality
 from utils import util_functions
 
 class A37ExactQualifiedCardinality(RDFStatInterface):
@@ -7,7 +7,7 @@ class A37ExactQualifiedCardinality(RDFStatInterface):
 
     def __init__(self, results):
         super(A37ExactQualifiedCardinality, self).__init__(results)
-        self.detectors = []
+        self.detectors = [ExactQualifiedCardinalityDetectorOwlCardinality()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
         for d in self.detectors:

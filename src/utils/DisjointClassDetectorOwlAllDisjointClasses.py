@@ -32,6 +32,7 @@ class DisjointClassDetectorOwlAllDisjointClasses(DisjointClassDetector):
     def compute(self):
         self.disjoint_classes_list_creator.compute()
 
+
         memberList = self.disjoint_classes_list_creator.get_list()
 
         # We have now all the owl:members (rdf:first, rdf:rest construct) in memberList
