@@ -2,6 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/161209581.svg)](https://zenodo.org/badge/latestdoi/161209581)
 
+A LODStats extension to compute restriction type statistics for ontologies.
+Whereas the actual extension consists of own statistical modules (`src/restriction-types-stats`)
+and a different commandline script (`src/lodstats.py`).
 
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
 
@@ -10,14 +13,14 @@ Example, calling the `lodstats.sh` script to execute lodstats within a docker co
 bash lodstats.sh
 
 # execute our statistics (if folder input mounted to docker container)
-bash lodstats.sh -o restriction-types-stats /input/foaf/foaf.rdf 
+bash lodstats.sh -o restriction-types-stats /input/foaf.nt 
 
 # execute our statistics on an HTTP uri
 bash lodstats.sh -o restriction-types-stats http://xmlns.com/foaf/spec/index.rdf
 ```
 
 please note that lodstats is called in the container, thus needed directories needs to be mounted in the docker-compose file.
-In the shown example, the input is taken from the mounted input directory which is mounted inside the lodstats.sh script.
+In the shown example, the input is taken from the mounted input directory which is mounted in the docker-compose file.
 
 # How does LODStats work?
 
@@ -32,7 +35,7 @@ In the shown example, the input is taken from the mounted input directory which 
 # How does our extension work?
 
 * We adapted the lodstats script, to take also another stats directory into account (`./src/lodstats.py` with `-o` option).
-* Our stats modules are in the `constraint-type-stats` directory (including `__init__.py`, which makes the stats modules available
+* Our stats modules are in the `restriction-types-stats` directory (including `__init__.py`, which makes the stats modules available
 
 # How to install LODStats?
 
