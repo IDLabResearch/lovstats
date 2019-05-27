@@ -176,7 +176,7 @@ def create_dataset(measure_name, datasets, graph, provGeneration, provGeneration
         graph.add((dataset, rdflib.RDF.type, qb.DataSet))
         graph.add((dataset, rdflib.RDF.type, lovc.Dataset))
         graph.add((dataset, rdflib.RDF.type, prov.Entity))
-        graph.add((dataset, qb.structure, lrd[measure_to_structure_mappings[measure_name]]))
+        graph.add((dataset, qb.structure, rls[measure_to_structure_mappings[measure_name]]))
         graph.add((dataset, prov.qualifiedGeneration, provGeneration))
         graph.add((dataset, prov.wasGeneratedBy, provGenerationActivity))
         datasets[measure_name] = dataset
@@ -276,16 +276,16 @@ if not options.void:
                     g.add((observ, rdflib.RDF.type, prov.Entity))
                     g.add((observ, rdflib.RDF.type, lovc.RestrictionTypeStatistic))
                     g.add((observ, qb.dataSet, dataset))
-                    g.add((observ, lrd['executionTimeDimension'], rdflib.Literal(executionTime)))
-                    g.add((observ, lrd['restrictionTypeDimension'], lrd[detectors_dict.get('restriction-type')]))
-                    g.add((observ, lrd['detectorDimension'], lrd[detectors_name]))
-                    g.add((observ, lrd['detectorVersionDimension'], lrd[detectors_dict.get('version', '')]))
-                    g.add((observ, lrd[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=results_dict.get('type', 'string'))))
+                    g.add((observ, rls['executionTimeDimension'], rdflib.Literal(executionTime)))
+                    g.add((observ, rls['restrictionTypeDimension'], rls[detectors_dict.get('restriction-type')]))
+                    g.add((observ, rls['detectorDimension'], rls[detectors_name]))
+                    g.add((observ, rls['detectorVersionDimension'], rls[detectors_dict.get('version', '')]))
+                    g.add((observ, rls[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=results_dict.get('type', 'string'))))
 
                     if options.ontology_uri:
-                        g.add((observ, lrd['ontologyVersionDimension'], rdflib.URIRef(options.ontology_uri)))
+                        g.add((observ, rls['ontologyVersionDimension'], rdflib.URIRef(options.ontology_uri)))
                     else:
-                        g.add((observ, lrd['ontologyVersionDimension'], rdflib.Literal("")))
+                        g.add((observ, rln['ontologyVersionDimension'], rdflib.Literal("")))
                     # link observations to generation activity
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
 
