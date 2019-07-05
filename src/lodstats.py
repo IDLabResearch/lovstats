@@ -55,6 +55,7 @@ parser.add_option('-d', '--debug', action='store_true', help='print debugging ou
 parser.add_option('-o', '--other-stats-folder', dest='other_stats_folder', help='Use also this folder to look for stats')
 parser.add_option('-u', '--ontology-uri', dest='ontology_uri', help='The URI of the provided ontology')
 parser.add_option('-r', '--result-file', dest='result_file', help='The name of the file where the statistics should be stored')
+parser.add_option('-b', '--ontology-repository-uri', dest='ontology_repository_uri', help='The URI of the repository this ontology was obtained from')
 (options, args) = parser.parse_args()
 
 if len(args) == 0:
@@ -280,6 +281,7 @@ if not options.void:
                     g.add((observ, rls['restrictionTypeDimension'], rls[detectors_dict.get('restriction-type')]))
                     g.add((observ, rls['detectorDimension'], rls[detectors_name]))
                     g.add((observ, rls['detectorVersionDimension'], rls[detectors_dict.get('version', '')]))
+                    g.add((observ, rls['ontologyRepositoryDimension'], rdflib.URIRef(options.ontology_repository_uri)))
                     g.add((observ, rls[results_name], rdflib.Literal(results_dict.get('value', ''), datatype=results_dict.get('type', 'string'))))
 
                     if options.ontology_uri:
