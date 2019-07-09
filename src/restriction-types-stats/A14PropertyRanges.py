@@ -1,5 +1,7 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.PropertyRangeDetectorRdfsRange import PropertyRangeDetectorRdfsRange
+from utils.PropertyRangeDetectorOwlObjectPropertyRange import PropertyRangeDetectorOwlObjectPropertyRange
+from utils.PropertyRangeDetectorOwlDataPropertyRange import PropertyRangeDetectorOwlDataPropertyRange
 from utils import util_functions
 
 
@@ -8,7 +10,7 @@ class A14PropertyRanges(RDFStatInterface):
 
     def __init__(self, results):
         super(A14PropertyRanges, self).__init__(results)
-        self.detectors = [PropertyRangeDetectorRdfsRange()]
+        self.detectors = [PropertyRangeDetectorRdfsRange(), PropertyRangeDetectorOwlObjectPropertyRange(), PropertyRangeDetectorOwlDataPropertyRange()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
         for d in self.detectors:
