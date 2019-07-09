@@ -2,6 +2,7 @@ from numpy import median
 
 from lodstats.stats.RDFStatInterface import RDFStatInterface
 from utils.SubsumptionDetectorRdfsSubClassOf import SubsumptionDetectorRdfsSubClassOf
+from utils.SubsumptionDetectorOwlSubClassOf import SubsumptionDetectorOwlSubClassOf
 from utils import util_functions
 
 class A4Subsumption(RDFStatInterface):
@@ -14,7 +15,7 @@ class A4Subsumption(RDFStatInterface):
 
     def __init__(self, results):
         super(A4Subsumption, self).__init__(results)
-        self.detectors = [SubsumptionDetectorRdfsSubClassOf()]
+        self.detectors = [SubsumptionDetectorRdfsSubClassOf(), SubsumptionDetectorOwlSubClassOf()]
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
         for d in self.detectors:

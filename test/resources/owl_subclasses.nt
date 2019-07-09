@@ -1,0 +1,15 @@
+_:b3 <http://www.w3.org/2002/07/owl#IRI> "http://example.org#Machine" .
+<http://example.org#Vehicle> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://example.org#Plane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+# should count because object is an IRI
+<http://example.org#Plane> <http://www.w3.org/2002/07/owl#SubClassOf> <http://example.org#Vehicle> .
+_:b1 <http://www.w3.org/2002/07/owl#IRI> "http://example.org#FamilyCar" .
+# should count because _:b2 has an IRI
+_:b1 <http://www.w3.org/2002/07/owl#SubClassOf> _:b2 .
+_:b2 <http://www.w3.org/2002/07/owl#IRI> "http://example.org#Car" .
+# should count because _:b3 has an IRI
+<http://example.org#Computer> <http://www.w3.org/2002/07/owl#SubClassOf> _:b3 .
+# should NOT count because _:b4 is not defined
+<http://example.org#DrillingMachine> <http://www.w3.org/2002/07/owl#SubClassOf> _:b4 .
+# should count because _:b2 has an IRI
+<http://example.org#SportsCar> <http://www.w3.org/2002/07/owl#SubClassOf> _:b2 .
