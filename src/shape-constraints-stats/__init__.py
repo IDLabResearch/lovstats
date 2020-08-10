@@ -21,10 +21,19 @@ along with LODStats.  If not, see <http://www.gnu.org/licenses/>.
 # import stats modules "from xx import xx"
 from ValueTypeClassConstraint import ValueTypeClassConstraint
 from ValueTypeDatatypeConstraint import ValueTypeDatatypeConstraint
+from ValueRangeMaxExclusiveConstraint import ValueRangeMaxExclusiveConstraint
+from ValueRangeMaxInclusiveConstraint import ValueRangeMaxInclusiveConstraint
+from ValueRangeMinExclusiveConstraint import ValueRangeMinExclusiveConstraint
+from ValueRangeMinInclusiveConstraint import ValueRangeMinInclusiveConstraint
+from CardinalityMaxCountConstraint import CardinalityMaxCountConstraint
+from CardinalityMinCountConstraint import CardinalityMinCountConstraint
 
 
 
-all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint]
+all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
+             ValueRangeMaxExclusiveConstraint, ValueRangeMaxInclusiveConstraint,
+             ValueRangeMinExclusiveConstraint, ValueRangeMinInclusiveConstraint,
+             CardinalityMaxCountConstraint, CardinalityMinCountConstraint]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
