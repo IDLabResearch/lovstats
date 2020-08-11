@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.CardinalityMinCountDetectorSHACLMinCount import CardinalityMinCountDetectorSHACLMinCount
+from shape_constraint_detectors.CardinalityMinCountDetectorSHACLMinCount import CardinalityMinCountDetectorSHACLMinCount
 from utils import util_functions
 
 

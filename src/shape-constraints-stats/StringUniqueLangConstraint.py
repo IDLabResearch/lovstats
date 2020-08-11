@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.StringUniqueLangDetectorSHACLUniqueLang import StringUniqueLangDetectorSHACLUniqueLang
+from shape_constraint_detectors.StringUniqueLangDetectorSHACLUniqueLang import StringUniqueLangDetectorSHACLUniqueLang
 from utils import util_functions
 
 

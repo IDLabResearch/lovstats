@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.StringMinLengthDetectorSHACLMinLength import StringMinLengthDetectorSHACLMinLength
+from shape_constraint_detectors.StringMinLengthDetectorSHACLMinLength import StringMinLengthDetectorSHACLMinLength
 from utils import util_functions
 
 

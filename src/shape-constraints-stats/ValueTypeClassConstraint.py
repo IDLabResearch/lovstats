@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.ValueTypeClassDetectorSHACLClass import ValueTypeClassDetectorSHACLClass
+from shape_constraint_detectors.ValueTypeClassDetectorSHACLClass import ValueTypeClassDetectorSHACLClass
 from utils import util_functions
 
 

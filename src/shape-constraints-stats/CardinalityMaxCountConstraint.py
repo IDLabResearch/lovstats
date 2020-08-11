@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.CardinalityMaxCountDetectorSHACLMaxCount import CardinalityMaxCountDetectorSHACLMaxCount
+from shape_constraint_detectors.CardinalityMaxCountDetectorSHACLMaxCount import CardinalityMaxCountDetectorSHACLMaxCount
 from utils import util_functions
 
 

@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.ValueRangeMinExclusiveDetectorSHACLMinExclusive import ValueRangeMinExclusiveDetectorSHACLMinExclusive
+from shape_constraint_detectors.ValueRangeMinExclusiveDetectorSHACLMinExclusive import ValueRangeMinExclusiveDetectorSHACLMinExclusive
 from utils import util_functions
 
 

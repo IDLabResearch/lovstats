@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.ValueRangeMaxInclusiveDetectorSHACLMaxExclusive import ValueRangeMaxInclusiveDetectorSHACLMaxInclusive
+from shape_constraint_detectors.ValueRangeMaxInclusiveDetectorSHACLMaxInclusive import ValueRangeMaxInclusiveDetectorSHACLMaxInclusive
 from utils import util_functions
 
 

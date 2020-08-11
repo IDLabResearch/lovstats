@@ -1,5 +1,5 @@
 from lodstats.stats.RDFStatInterface import RDFStatInterface
-from shape-constraint-detectors.StringMaxLengthDetectorSHACLMaxLength import StringMaxLengthDetectorSHACLMaxLength
+from shape_constraint_detectors.StringMaxLengthDetectorSHACLMaxLength import StringMaxLengthDetectorSHACLMaxLength
 from utils import util_functions
 
 
