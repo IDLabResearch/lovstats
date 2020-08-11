@@ -32,6 +32,10 @@ from StringMaxLengthConstraint import StringMaxLengthConstraint
 from StringPatternConstraint import StringPatternConstraint
 from StringLanguageInConstraint import StringLanguageInConstraint
 from StringUniqueLangConstraint import StringUniqueLangConstraint
+from PropertyPairDisjointConstraint import PropertyPairDisjointConstraint
+from PropertyPairEqualsConstraint import PropertyPairEqualsConstraint
+from PropertyPairLessThanConstraint import PropertyPairLessThanConstraint
+from PropertyPairLessThanOrEqualsConstraint import PropertyPairLessThanOrEqualsConstraint
 
 
 all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
@@ -39,7 +43,9 @@ all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ValueRangeMinExclusiveConstraint, ValueRangeMinInclusiveConstraint,
              CardinalityMaxCountConstraint, CardinalityMinCountConstraint,
              StringMinLengthConstraint, StringMaxLengthConstraint, StringPatternConstraint,
-             StringLanguageInConstraint, StringUniqueLangConstraint]
+             StringLanguageInConstraint, StringUniqueLangConstraint,
+             PropertyPairDisjointConstraint, PropertyPairEqualsConstraint,
+             PropertyPairLessThanConstraint, PropertyPairLessThanOrEqualsConstraint]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
