@@ -27,13 +27,19 @@ from ValueRangeMinExclusiveConstraint import ValueRangeMinExclusiveConstraint
 from ValueRangeMinInclusiveConstraint import ValueRangeMinInclusiveConstraint
 from CardinalityMaxCountConstraint import CardinalityMaxCountConstraint
 from CardinalityMinCountConstraint import CardinalityMinCountConstraint
-
+from StringMinLengthConstraint import StringMinLengthConstraint
+from StringMaxLengthConstraint import StringMaxLengthConstraint
+from StringPatternConstraint import StringPatternConstraint
+from StringLanguageInConstraint import StringLanguageInConstraint
+from StringUniqueLangConstraint import StringUniqueLangConstraint
 
 
 all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ValueRangeMaxExclusiveConstraint, ValueRangeMaxInclusiveConstraint,
              ValueRangeMinExclusiveConstraint, ValueRangeMinInclusiveConstraint,
-             CardinalityMaxCountConstraint, CardinalityMinCountConstraint]
+             CardinalityMaxCountConstraint, CardinalityMinCountConstraint,
+             StringMinLengthConstraint, StringMaxLengthConstraint, StringPatternConstraint,
+             StringLanguageInConstraint, StringUniqueLangConstraint]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
