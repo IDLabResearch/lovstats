@@ -36,7 +36,10 @@ from PropertyPairDisjointConstraint import PropertyPairDisjointConstraint
 from PropertyPairEqualsConstraint import PropertyPairEqualsConstraint
 from PropertyPairLessThanConstraint import PropertyPairLessThanConstraint
 from PropertyPairLessThanOrEqualsConstraint import PropertyPairLessThanOrEqualsConstraint
-
+from LogicalConjunctionConstraint import LogicalConjunctionConstraint
+from LogicalExclusiveDisjunctionConstraint import LogicalExclusiveDisjunctionConstraint
+from LogicalDisjunctionConstraint import LogicalDisjunctionConstraint
+from LogicalNegationConstraint import LogicalNegationConstraint
 
 all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ValueRangeMaxExclusiveConstraint, ValueRangeMaxInclusiveConstraint,
@@ -45,7 +48,9 @@ all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              StringMinLengthConstraint, StringMaxLengthConstraint, StringPatternConstraint,
              StringLanguageInConstraint, StringUniqueLangConstraint,
              PropertyPairDisjointConstraint, PropertyPairEqualsConstraint,
-             PropertyPairLessThanConstraint, PropertyPairLessThanOrEqualsConstraint]
+             PropertyPairLessThanConstraint, PropertyPairLessThanOrEqualsConstraint,
+             LogicalDisjunctionConstraint, LogicalExclusiveDisjunctionConstraint,
+             LogicalConjunctionConstraint, LogicalNegationConstraint]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
