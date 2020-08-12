@@ -49,6 +49,10 @@ from OtherHasValueConstraint import OtherHasValueConstraint
 from OtherValueInConstraint import OtherValueInConstraint
 from OtherClosedConstraint import OtherClosedConstraint
 from OtherIgnoredPropertiesConstraint import OtherIgnoredPropertiesConstraint
+from TargetClassTarget import TargetClassTarget
+from TargetNodeTarget import TargetNodeTarget
+from TargetSubjectsOfTarget import TargetSubjectsOfTarget
+from TargetObjectsOfTarget import TargetObjectsOfTarget
 
 all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ValueRangeMaxExclusiveConstraint, ValueRangeMaxInclusiveConstraint,
@@ -63,7 +67,8 @@ all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ShapeNodeConstraint, ShapePropertyConstraint, ShapeQualifiedValueConstraint,
              ShapeQualifiedMinCountConstraint, ShapeQualifiedMaxCountConstraint,
              OtherHasValueConstraint, OtherValueInConstraint,
-             OtherClosedConstraint, OtherIgnoredPropertiesConstraint]
+             OtherClosedConstraint, OtherIgnoredPropertiesConstraint,
+             TargetClassTarget, TargetNodeTarget, TargetSubjectsOfTarget, TargetObjectsOfTarget]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
