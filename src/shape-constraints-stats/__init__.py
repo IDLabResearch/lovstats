@@ -45,6 +45,10 @@ from ShapePropertyConstraint import ShapePropertyConstraint
 from ShapeQualifiedMaxCountConstraint import ShapeQualifiedMaxCountConstraint
 from ShapeQualifiedMinCountConstraint import ShapeQualifiedMinCountConstraint
 from ShapeQualifiedValueConstraint import ShapeQualifiedValueConstraint
+from OtherHasValueConstraint import OtherHasValueConstraint
+from OtherValueInConstraint import OtherValueInConstraint
+from OtherClosedConstraint import OtherClosedConstraint
+from OtherIgnoredPropertiesConstraint import OtherIgnoredPropertiesConstraint
 
 all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              ValueRangeMaxExclusiveConstraint, ValueRangeMaxInclusiveConstraint,
@@ -57,7 +61,9 @@ all_stats = [ValueTypeClassConstraint, ValueTypeDatatypeConstraint,
              LogicalDisjunctionConstraint, LogicalExclusiveDisjunctionConstraint,
              LogicalConjunctionConstraint, LogicalNegationConstraint,
              ShapeNodeConstraint, ShapePropertyConstraint, ShapeQualifiedValueConstraint,
-             ShapeQualifiedMinCountConstraint, ShapeQualifiedMaxCountConstraint]
+             ShapeQualifiedMinCountConstraint, ShapeQualifiedMaxCountConstraint,
+             OtherHasValueConstraint, OtherValueInConstraint,
+             OtherClosedConstraint, OtherIgnoredPropertiesConstraint]
 
 # will hold the objects doing the stats, initialized in init_stats()
 stats_to_do = []
