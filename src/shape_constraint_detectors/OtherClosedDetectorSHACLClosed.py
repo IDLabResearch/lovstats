@@ -11,7 +11,7 @@ class OtherClosedDetectorSHACLClosed(OtherClosedDetector):
         self.number = 0
 
     def count(self, s, p, o, s_blank, o_l, o_blank, statement):
-        if p == 'http://www.w3.org/ns/shacl#closed':
+        if p == 'http://www.w3.org/ns/shacl#closed' and o == "true":
             self.number += 1
 
     def getName(self):
