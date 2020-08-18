@@ -6,11 +6,19 @@ services:
     stdin_open: true
     tty: true
     volumes:
+      - "../getvocname_v2.js:/script/getvocname_v2.js"
+      - "../getvocname_bioportal.js:/script/getvocname_bioportal.js"
+      - "../lovver/list_bioportal.json:/input/list_bioportal.json"
+      - "../get_stats_v2.sh:/script/get_stats_v2.sh"
+      - "../get_stats_shapes.sh:/script/get_stats_shapes.sh"
+      - "../get_stats_bioportal.py:/script/get_stats_bioportal.py"
+      - "../get_stats_bioportal.sh:/script/get_stats_bioportal.sh"
+      - "../create-bioportal-namespace-lookup-file.js:/script/create-bioportal-namespace-lookup-file.js"
       - "./src/:/src"
       - "./src/lodstats.py:/LODStats/scripts/lodstats"
-      - "./input/:/input"
-      - "./output/:/output"
-      - "../lovver/ontologies-2018-12-05/:/lovver"
+      - "../../montolo/shapes/vlaanderen/:/input"
+      - "../stats-2019-09-16-shapes-vlaanderen/:/output"
+      - "../../lovver/ontologies-2018-12-09/:/lovver"
     network_mode: bridge
   lodstats-test:
     build: docker-test
