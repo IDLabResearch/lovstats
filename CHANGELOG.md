@@ -13,10 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Detector for OWL exact qualified cardinality `owl:qualifiedCardinality`
 - Detectors for OWL object and datatype domain/range (note they are not part of official OWL-RDF as it will just be `rdfs:domain` and `rdfs:range`)
 - Detector for OWL subsumption `owl:subClassOf` (note this is not official OWL-RDF as it should just be `rdfs:subClassOf`)
+- new commandline option to specify a repository URI where the input was taken from, which will be added as dimension to the output stats
 
 ### Changed
 
-- Statistics namespace `rls` instead of `lrd`
+- Statistics namespace now `https://w3id.org/montolo/ns/montolo#` instead of `https://w3id.org/lovcube/ns/relovstats#`
+- Statistics vocabulary namespace now `https://w3id.org/montolo/ns/montolo-voc#` instead of `https://w3id.org/lovcube/ns/lovcube#`
 
 ## [0.1.0] - 2018-12-10
 
