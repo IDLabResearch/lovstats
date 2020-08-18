@@ -2,9 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/161209581.svg)](https://zenodo.org/badge/latestdoi/161209581)
 
-A LODStats extension to compute restriction type statistics for ontologies.
-Whereas the actual extension consists of own statistical modules (`src/restriction-types-stats`)
-and a different commandline script (`src/lodstats.py`).
+A LODStats extension to compute restriction type statistics for RDF data models, currently with modules for axioms (OWL, RDFS) and constraints (SHACL).
+Whereas the actual extension consists of own statistical modules (`src/restriction-types-stats`, `src/shape-constraints-stats`)
+and a different commandline script (`src/lodstats.py`) compared to the original LODStats.
 
 Example, calling the `lodstats.sh` script to execute lodstats within a docker container 
 
@@ -19,7 +19,7 @@ bash lodstats.sh -o restriction-types-stats /input/foaf.nt
 bash lodstats.sh -o restriction-types-stats http://xmlns.com/foaf/spec/index.rdf
 ```
 
-please note that lodstats is called in the container, thus needed directories needs to be mounted in the docker-compose file.
+please note that lodstats is called in the container, thus needed directories needs to be mounted in the docker-compose file or docker run command.
 In the shown example, the input is taken from the mounted input directory which is mounted in the docker-compose file.
 
 # How does LODStats work?
@@ -35,7 +35,8 @@ In the shown example, the input is taken from the mounted input directory which 
 # How does our extension work?
 
 * We adapted the lodstats script, to take also another stats directory into account (`./src/lodstats.py` with `-o` option).
-* Our stats modules are in the `restriction-types-stats` directory (including `__init__.py`, which makes the stats modules available
+* Our stats modules for axioms are in the `restriction-types-stats` directory (including `__init__.py`, which makes the stats modules available
+* Our stats modules for constraints are in the `shape-constraints-stats` directory (including `__init__.py`, which makes the stats modules available
 
 # How to install LODStats?
 
