@@ -287,7 +287,7 @@ if not options.void:
                     if options.ontology_uri:
                         g.add((observ, rls['ontologyVersionDimension'], rdflib.URIRef(options.ontology_uri)))
                     else:
-                        g.add((observ, rln['ontologyVersionDimension'], rdflib.Literal("")))
+                        g.add((observ, rls['ontologyVersionDimension'], rdflib.Literal("")))
                     # link observations to generation activity
                     g.add((observ, prov.qualifiedGeneration, provGeneration))
 
